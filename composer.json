@@ -1,6 +1,6 @@
 {
   "name": "tentwofour/marcato-integration-bundle",
-  "type": "Symfony2 Bundle",
+  "type": "symfony-bundle",
   "description": "A Symfony2 bundle to integrate the Marcato Festival Management XML feeds into your application/website.",
   "keywords": ["Symfony2", "Marcato", "tentwofour", "bundle"],
   "license": "MIT",
