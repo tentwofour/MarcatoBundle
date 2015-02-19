@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<venues type="array">
+    <venue>
+        <community></community>
+        <description></description>
+        <description_alternate nil="true"></description_alternate>
+        <directions></directions>
+        <directions_alternate nil="true"></directions_alternate>
+        <id type="integer">707790</id>
+        <name>club west</name>
+        <updated_at type="datetime">2014-08-26T20:21:21-03:00</updated_at>
+        <photo_url></photo_url>
+        <photo_url_root></photo_url_root>
+        <photo_fingerprint nil="true"></photo_fingerprint>
+        <street></street>
+        <city></city>
+        <province_state></province_state>
+        <country></country>
+        <postal_code></postal_code>
+        <primary_phone_number></primary_phone_number>
+        <longitude nil="true"></longitude>
+        <latitude nil="true"></latitude>
+        <google_maps_link nil="true"></google_maps_link>
+        <websites type="array"/>
+        <categories type="array">
+            <category>stage hands</category>
+            <category>Parking: Yes</category>
+            <category>Test</category>
+            <category>UPDATE</category>
+        </categories>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+        <workshops type="array"/>
+        <shows type="array"/>
+    </venue>
+    <venue>
+        <community></community>
+        <description></description>
+        <description_alternate nil="true"></description_alternate>
+        <directions></directions>
+        <directions_alternate nil="true"></directions_alternate>
+        <id type="integer">707539</id>
+        <name>Exhibit Hall 2</name>
+        <updated_at type="datetime">2014-03-27T11:27:03-03:00</updated_at>
+        <photo_url></photo_url>
+        <photo_url_root></photo_url_root>
+        <photo_fingerprint nil="true"></photo_fingerprint>
+        <street></street>
+        <city></city>
+        <province_state></province_state>
+        <country></country>
+        <postal_code></postal_code>
+        <primary_phone_number></primary_phone_number>
+        <longitude nil="true"></longitude>
+        <latitude nil="true"></latitude>
+        <google_maps_link nil="true"></google_maps_link>
+        <websites type="array"/>
+        <categories type="array">
+            <category>Merchandise Venue</category>
+            <category>Parking: Yes</category>
+            <category>Test</category>
+            <category>diet</category>
+            <category>UPDATE</category>
+        </categories>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+        <workshops type="array"/>
+        <shows type="array"/>
+    </venue>
+    <venue>
+        <community></community>
+        <description></description>
+        <description_alternate nil="true"></description_alternate>
+        <directions></directions>
+        <directions_alternate nil="true"></directions_alternate>
+        <id type="integer">707532</id>
+        <name>Grandstand (Main Stage)</name>
+        <updated_at type="datetime">2014-08-26T14:44:10-03:00</updated_at>
+        <photo_url></photo_url>
+        <photo_url_root></photo_url_root>
+        <photo_fingerprint nil="true"></photo_fingerprint>
+        <street></street>
+        <city>Calgary</city>
+        <province_state>Alberta</province_state>
+        <country></country>
+        <postal_code></postal_code>
+        <primary_phone_number></primary_phone_number>
+        <longitude type="decimal">-114.0581012</longitude>
+        <latitude type="decimal">51.0453246</latitude>
+        <google_maps_link>http://maps.google.com/?q=Calgary, Alberta </google_maps_link>
+        <websites type="array"/>
+        <categories type="array">
+            <category>website submission</category>
+            <category>Concession Stanf</category>
+            <category>Merchandise Venue</category>
+            <category>Parking: Yes</category>
+            <category>Test</category>
+        </categories>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+        <workshops type="array"/>
+        <shows type="array"/>
+    </venue>
+    <venue>
+        <community></community>
+        <description></description>
+        <description_alternate nil="true"></description_alternate>
+        <directions></directions>
+        <directions_alternate nil="true"></directions_alternate>
+        <id type="integer">710273</id>
+        <name>Millennium Stage NORTH</name>
+        <updated_at type="datetime">2014-08-26T11:35:06-03:00</updated_at>
+        <photo_url></photo_url>
+        <photo_url_root></photo_url_root>
+        <photo_fingerprint nil="true"></photo_fingerprint>
+        <street></street>
+        <city></city>
+        <province_state></province_state>
+        <country></country>
+        <postal_code></postal_code>
+        <primary_phone_number></primary_phone_number>
+        <longitude nil="true"></longitude>
+        <latitude nil="true"></latitude>
+        <google_maps_link nil="true"></google_maps_link>
+        <websites type="array"/>
+        <categories type="array">
+            <category>Parking: Yes</category>
+            <category>Test</category>
+        </categories>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+        <workshops type="array"/>
+        <shows type="array"/>
+    </venue>
+    <venue>
+        <community>Kid Rock Cruise</community>
+        <description>Deck 12, Midship</description>
+        <description_alternate nil="true"></description_alternate>
+        <directions>During large shows move all red bull tables off the grass and push tables and chairs to the sides.
+            During smaller shows place red bull tables on and around the grass. Set up tables and chairs along the left and right sides of the deck.
+            During large shows pull all lounge chairs from deck 13.
+            During smaller shows one row of lounge chairs around deck 13.</directions>
+        <directions_alternate nil="true"></directions_alternate>
+        <id type="integer">707693</id>
+        <name>Pool Deck</name>
+        <updated_at type="datetime">2014-03-27T11:27:08-03:00</updated_at>
+        <photo_url>https://s3-us-west-2.amazonaws.com/marcato.west/venues_files/photos/707693/original.jpeg?1395343966</photo_url>
+        <photo_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/venues_files/photos/707693/</photo_url_root>
+        <photo_fingerprint>bc387bb7e6990bd49df2a5ea13d1cc92</photo_fingerprint>
+        <street></street>
+        <city></city>
+        <province_state></province_state>
+        <country></country>
+        <postal_code></postal_code>
+        <primary_phone_number>8425</primary_phone_number>
+        <longitude nil="true"></longitude>
+        <latitude nil="true"></latitude>
+        <google_maps_link nil="true"></google_maps_link>
+        <websites type="array"/>
+        <categories type="array">
+            <category>Parking: Yes</category>
+            <category>Test</category>
+        </categories>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+        <workshops type="array"/>
+        <shows type="array"/>
+    </venue>
+</venues>

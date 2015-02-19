@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shows type="array">
+    <show>
+        <date type="date">2013-06-03</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">73152</id>
+        <name>Canada</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-06-07T10:12:31-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Monday June 3rd</formatted_date>
+        <formatted_start_time> 5:09 AM</formatted_start_time>
+        <formatted_end_time> 7:09 AM</formatted_end_time>
+        <formatted_door_time nil="true"></formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1370217600</date_unix>
+        <start_time_unix type="integer">1370236140</start_time_unix>
+        <end_time_unix type="integer">1370243340</end_time_unix>
+        <door_time_unix nil="true"></door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <nil-classes type="array"/>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-06-03</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">73153</id>
+        <name>Canada</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-06-07T10:12:34-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Monday June 3rd</formatted_date>
+        <formatted_start_time> 5:09 AM</formatted_start_time>
+        <formatted_end_time> 7:09 AM</formatted_end_time>
+        <formatted_door_time nil="true"></formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1370217600</date_unix>
+        <start_time_unix type="integer">1370236140</start_time_unix>
+        <end_time_unix type="integer">1370243340</end_time_unix>
+        <door_time_unix nil="true"></door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <nil-classes type="array"/>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-07-18</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">74059</id>
+        <name>asdfasdfsdf</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-07-16T15:09:44-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Thursday July 18th</formatted_date>
+        <formatted_start_time nil="true"></formatted_start_time>
+        <formatted_end_time nil="true"></formatted_end_time>
+        <formatted_door_time nil="true"></formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1374105600</date_unix>
+        <start_time_unix nil="true"></start_time_unix>
+        <end_time_unix nil="true"></end_time_unix>
+        <door_time_unix nil="true"></door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-08</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">74404</id>
+        <name>AAAAAAAAA</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-10-02T16:07:33-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Thursday August 8th</formatted_date>
+        <formatted_start_time nil="true"></formatted_start_time>
+        <formatted_end_time nil="true"></formatted_end_time>
+        <formatted_door_time nil="true"></formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1375920000</date_unix>
+        <start_time_unix nil="true"></start_time_unix>
+        <end_time_unix nil="true"></end_time_unix>
+        <door_time_unix nil="true"></door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>233321</id>
+                <artist>Ani DiFranco</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61091</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <rank></rank>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-16</date>
+        <description_limited>Sheryl Crow - 7:00
+            The Tragically Hip - 8:00
+            Sarah MacLachlan - 9:00
+            U2 - 10:00
+            add some changes</description_limited>
+        <description_public>With Sheryl Crow starting off the night at 7:00 it is bound to be a great concert. She will take the stage for a full 45 minutes.
+
+            The Tragically Hip is next to take the stage at 8:00 and will entertain the crowd for the next hour.
+
+            Sarah MacLachlan is up next and will give the performance of a life time. Her singles "Illusions of Bliss" and "Forgiveness" will certainly be on the set list.
+
+            Just when you think the night is over U2 takes the stage at 10:00 and will leave the crowd on their feet with their most recent songs. </description_public>
+        <description_web>With Sheryl Crow starting off the night at 7:00 it is bound to be a great concert. She will take the stage for a full 45 minutes.
+
+            The Tragically Hip is next to take the stage at 8:00 and will entertain the crowd for the next hour.
+
+            Sarah MacLachlan is up next and will give the performance of a life time. Her singles "Illusions of Bliss" and "Forgiveness" will certainly be on the set list.
+
+            Just when you think the night is over U2 takes the stage at 10:00 and will leave the crowd on their feet with their most recent songs. </description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">75567</id>
+        <name>The Commons: Friday Night</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-09-12T15:32:36-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Friday August 16th</formatted_date>
+        <formatted_start_time> 7:00 PM</formatted_start_time>
+        <formatted_end_time>11:30 PM</formatted_end_time>
+        <formatted_door_time> 6:30 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link>http://www.facebook.com/event.php?eid=344431595644707</facebook_link>
+        <poster_url>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/7381/original.png</poster_url>
+        <poster_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/7381/</poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1376611200</date_unix>
+        <start_time_unix type="integer">1376679600</start_time_unix>
+        <end_time_unix type="integer">1376695800</end_time_unix>
+        <door_time_unix type="integer">1376677800</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>237798</id>
+                <artist>Sheryl Crow</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61131</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:00 PM</start>
+                <end> 7:45 PM</end>
+                <rank></rank>
+                <start_unix>1376679600</start_unix>
+                <end_unix>1376682300</end_unix>
+            </performance>
+            <performance>
+                <id>237799</id>
+                <artist>The Tragically Hip</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61071</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 8:00 PM</start>
+                <end> 8:45 PM</end>
+                <rank></rank>
+                <start_unix>1376683200</start_unix>
+                <end_unix>1376685900</end_unix>
+            </performance>
+            <performance>
+                <id>237801</id>
+                <artist>U2</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61211</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>10:26 PM</start>
+                <end>11:56 PM</end>
+                <rank></rank>
+                <start_unix>1376691960</start_unix>
+                <end_unix>1376697360</end_unix>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-16</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">40011</id>
+        <name>Friday Night Mainstage</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-03-28T10:43:37-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Friday August 16th</formatted_date>
+        <formatted_start_time> 7:00 PM</formatted_start_time>
+        <formatted_end_time>10:00 PM</formatted_end_time>
+        <formatted_door_time> 4:00 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1376611200</date_unix>
+        <start_time_unix type="integer">1376679600</start_time_unix>
+        <end_time_unix type="integer">1376690400</end_time_unix>
+        <door_time_unix type="integer">1376668800</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>130151</id>
+                <artist>Coldplay</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61181</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <rank></rank>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-16</date>
+        <description_limited>Sheryl Crow - 7:00
+            The Tragically Hip - 8:00
+            Sarah MacLachlan - 9:00
+            U2 - 10:00
+            add some changes</description_limited>
+        <description_public>With Sheryl Crow starting off the night at 7:00 it is bound to be a great concert. She will take the stage for a full 45 minutes.
+
+            The Tragically Hip is next to take the stage at 8:00 and will entertain the crowd for the next hour.
+
+            Sarah MacLachlan is up next and will give the performance of a life time. Her singles "Illusions of Bliss" and "Forgiveness" will certainly be on the set list.
+
+            Just when you think the night is over U2 takes the stage at 10:00 and will leave the crowd on their feet with their most recent songs. </description_public>
+        <description_web>With Sheryl Crow starting off the night at 7:00 it is bound to be a great concert. She will take the stage for a full 45 minutes.
+
+            The Tragically Hip is next to take the stage at 8:00 and will entertain the crowd for the next hour.
+
+            Sarah MacLachlan is up next and will give the performance of a life time. Her singles "Illusions of Bliss" and "Forgiveness" will certainly be on the set list.
+
+            Just when you think the night is over U2 takes the stage at 10:00 and will leave the crowd on their feet with their most recent songs. </description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">7381</id>
+        <name>The Commons: Friday Night</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-09-12T15:32:36-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Friday August 16th</formatted_date>
+        <formatted_start_time> 7:00 PM</formatted_start_time>
+        <formatted_end_time>11:30 PM</formatted_end_time>
+        <formatted_door_time> 6:30 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link>http://www.facebook.com/event.php?eid=344431595644707</facebook_link>
+        <poster_url>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/7381/original.png</poster_url>
+        <poster_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/7381/</poster_url_root>
+        <poster_fingerprint>e66eeda394a4390efe9294f07ba1ae07</poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1376611200</date_unix>
+        <start_time_unix type="integer">1376679600</start_time_unix>
+        <end_time_unix type="integer">1376695800</end_time_unix>
+        <door_time_unix type="integer">1376677800</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>29051</id>
+                <artist>Sheryl Crow</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61131</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:00 PM</start>
+                <end> 7:45 PM</end>
+                <rank></rank>
+                <start_unix>1376679600</start_unix>
+                <end_unix>1376682300</end_unix>
+            </performance>
+            <performance>
+                <id>29061</id>
+                <artist>The Tragically Hip</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61071</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 8:00 PM</start>
+                <end> 8:45 PM</end>
+                <rank></rank>
+                <start_unix>1376683200</start_unix>
+                <end_unix>1376685900</end_unix>
+            </performance>
+            <performance>
+                <id>29081</id>
+                <artist>U2</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61211</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>10:26 PM</start>
+                <end>11:56 PM</end>
+                <rank></rank>
+                <start_unix>1376691960</start_unix>
+                <end_unix>1376697360</end_unix>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-16</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web>Going to be a great show!</description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">38381</id>
+        <name>Marcato Festival Opener</name>
+        <price>65</price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-04-23T10:10:17-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Friday August 16th</formatted_date>
+        <formatted_start_time> 7:00 PM</formatted_start_time>
+        <formatted_end_time>11:00 PM</formatted_end_time>
+        <formatted_door_time> 6:05 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link>http://www.facebook.com/event.php?eid=318959838203156</facebook_link>
+        <poster_url>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/38381/original.jpeg?1348588894</poster_url>
+        <poster_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/38381/</poster_url_root>
+        <poster_fingerprint>f497b8992db8067a86a1e1c46d0d368b</poster_fingerprint>
+        <seating>General Admission</seating>
+        <ticket_status>Available</ticket_status>
+        <date_unix type="integer">1376611200</date_unix>
+        <start_time_unix type="integer">1376679600</start_time_unix>
+        <end_time_unix type="integer">1376694000</end_time_unix>
+        <door_time_unix type="integer">1376676300</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>169051</id>
+                <artist>Great Big Sea</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61231</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:00 PM</start>
+                <end> 8:15 PM</end>
+                <rank></rank>
+                <start_unix>1376679600</start_unix>
+                <end_unix>1376684100</end_unix>
+            </performance>
+            <performance>
+                <id>169071</id>
+                <artist>Phish</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61611</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 8:20 PM</start>
+                <end> 9:50 PM</end>
+                <rank></rank>
+                <start_unix>1376684400</start_unix>
+                <end_unix>1376689800</end_unix>
+            </performance>
+            <performance>
+                <id>169091</id>
+                <artist>City and Colour</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>104711</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>10:00 PM</start>
+                <end>11:00 PM</end>
+                <rank></rank>
+                <start_unix>1376690400</start_unix>
+                <end_unix>1376694000</end_unix>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-17</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">20781</id>
+        <name>Marcato Main Show</name>
+        <price>50</price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-03-14T11:20:02-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Saturday August 17th</formatted_date>
+        <formatted_start_time> 7:30 PM</formatted_start_time>
+        <formatted_end_time> 1:00 AM</formatted_end_time>
+        <formatted_door_time> 3:00 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link>http://www.facebook.com/event.php?eid=197600317023246</facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating>General Admission</seating>
+        <ticket_status>Available</ticket_status>
+        <date_unix type="integer">1376697600</date_unix>
+        <start_time_unix type="integer">1376767800</start_time_unix>
+        <end_time_unix type="integer">1376787600</end_time_unix>
+        <door_time_unix type="integer">1376751600</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>169161</id>
+                <artist>Matt Mays &amp; El Torpedo</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61171</artist_id>
+                <description>Matt Mays pick up second act of show</description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 9:20 PM</start>
+                <end>11:20 PM</end>
+                <rank></rank>
+                <start_unix>1376774400</start_unix>
+                <end_unix>1376781600</end_unix>
+            </performance>
+            <performance>
+                <id>169181</id>
+                <artist>Joel Plaskett Emergency</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61681</artist_id>
+                <description>Plaskett closes out the show</description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>11:25 PM</start>
+                <end> 1:00 AM</end>
+                <rank></rank>
+                <start_unix>1376781900</start_unix>
+                <end_unix>1376787600</end_unix>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2013-08-18</date>
+        <description_limited>Don't miss this opportunity to see your festival favourites one last time on the main stage!</description_limited>
+        <description_public>Don't miss this opportunity to see your festival favourites one last time on the main stage!</description_public>
+        <description_web>Don't miss this opportunity to see your festival favourites one last time on the main stage!</description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">11091</id>
+        <name>Marcato Festival Finale</name>
+        <price></price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2013-03-14T12:10:52-03:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Sunday August 18th</formatted_date>
+        <formatted_start_time> 7:30 PM</formatted_start_time>
+        <formatted_end_time> 1:00 AM</formatted_end_time>
+        <formatted_door_time> 6:30 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link>http://www.facebook.com/event.php?eid=273704192739006</facebook_link>
+        <poster_url>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/11091/original.png</poster_url>
+        <poster_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/11091/</poster_url_root>
+        <poster_fingerprint>20c36b31ba61f4ef66e47f4b18fa3145</poster_fingerprint>
+        <seating>General Admission</seating>
+        <ticket_status>Available</ticket_status>
+        <date_unix type="integer">1376784000</date_unix>
+        <start_time_unix type="integer">1376854200</start_time_unix>
+        <end_time_unix type="integer">1376874000</end_time_unix>
+        <door_time_unix type="integer">1376850600</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <performances type="array">
+            <performance>
+                <id>169221</id>
+                <artist>Ani DiFranco</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61091</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:30 PM</start>
+                <end> 9:00 PM</end>
+                <rank></rank>
+                <start_unix>1376854200</start_unix>
+                <end_unix>1376859600</end_unix>
+            </performance>
+            <performance>
+                <id>169221</id>
+                <artist>Carmel Mikol</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>77411</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:30 PM</start>
+                <end> 9:00 PM</end>
+                <rank></rank>
+                <start_unix>1376854200</start_unix>
+                <end_unix>1376859600</end_unix>
+            </performance>
+            <performance>
+                <id>169221</id>
+                <artist>Dave Gunning</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>90011</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 7:30 PM</start>
+                <end> 9:00 PM</end>
+                <rank></rank>
+                <start_unix>1376854200</start_unix>
+                <end_unix>1376859600</end_unix>
+            </performance>
+            <performance>
+                <id>169241</id>
+                <artist>Arcade Fire</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61591</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start> 9:10 PM</start>
+                <end>10:25 PM</end>
+                <rank></rank>
+                <start_unix>1376860200</start_unix>
+                <end_unix>1376864700</end_unix>
+            </performance>
+            <performance>
+                <id>169261</id>
+                <artist>City and Colour</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>104711</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>10:35 PM</start>
+                <end>11:35 PM</end>
+                <rank></rank>
+                <start_unix>1376865300</start_unix>
+                <end_unix>1376868900</end_unix>
+            </performance>
+            <performance>
+                <id>169281</id>
+                <artist>Matt Mays &amp; El Torpedo</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61171</artist_id>
+                <description>Matt Mays to close out the festival </description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <start>11:40 PM</start>
+                <end> 1:00 AM</end>
+                <rank></rank>
+                <start_unix>1376869200</start_unix>
+                <end_unix>1376874000</end_unix>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2014-01-25</date>
+        <description_limited>ska</description_limited>
+        <description_public>Frans Huxie lalala</description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">78083</id>
+        <name>Frans Huxie</name>
+        <price>10</price>
+        <ticket_info></ticket_info>
+        <ticket_link>http://www.bibelot.net/agenda/tickets/438</ticket_link>
+        <updated_at type="datetime">2014-01-24T06:20:30-04:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Saturday January 25th</formatted_date>
+        <formatted_start_time> 8:30 PM</formatted_start_time>
+        <formatted_end_time> 9:30 PM</formatted_end_time>
+        <formatted_door_time> 8:00 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating>General Admission</seating>
+        <ticket_status>Available</ticket_status>
+        <date_unix type="integer">1390608000</date_unix>
+        <start_time_unix type="integer">1390681800</start_time_unix>
+        <end_time_unix type="integer">1390685400</end_time_unix>
+        <door_time_unix type="integer">1390680000</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <nil-classes type="array"/>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2014-01-25</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">78084</id>
+        <name>Andere Koek</name>
+        <price>0</price>
+        <ticket_info></ticket_info>
+        <ticket_link></ticket_link>
+        <updated_at type="datetime">2014-01-24T06:47:05-04:00</updated_at>
+        <venue_name nil="true"></venue_name>
+        <formatted_date>Saturday January 25th</formatted_date>
+        <formatted_start_time> 9:00 PM</formatted_start_time>
+        <formatted_end_time> 9:30 PM</formatted_end_time>
+        <formatted_door_time> 8:00 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/78084/original.jpg?1390560424</poster_url>
+        <poster_url_root>https://s3-us-west-2.amazonaws.com/marcato.west/shows_files/posters/78084/</poster_url_root>
+        <poster_fingerprint>022a5b139b05981d47c7fece31439d69</poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1390608000</date_unix>
+        <start_time_unix type="integer">1390683600</start_time_unix>
+        <end_time_unix type="integer">1390685400</end_time_unix>
+        <door_time_unix type="integer">1390680000</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <nil-classes type="array"/>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+    <show>
+        <date type="date">2014-08-15</date>
+        <description_limited></description_limited>
+        <description_public></description_public>
+        <description_web></description_web>
+        <description_web_alternate nil="true"></description_web_alternate>
+        <id type="integer">88917</id>
+        <name>fiddler on the rocks</name>
+        <price>10</price>
+        <ticket_info></ticket_info>
+        <ticket_link>TICKETS.CA/FIDDLER</ticket_link>
+        <updated_at type="datetime">2014-08-12T13:42:55-03:00</updated_at>
+        <venue_name>bar</venue_name>
+        <formatted_date>Friday August 15th</formatted_date>
+        <formatted_start_time> 7:00 PM</formatted_start_time>
+        <formatted_end_time> 9:00 PM</formatted_end_time>
+        <formatted_door_time> 6:00 PM</formatted_door_time>
+        <event_contact_summary nil="true"></event_contact_summary>
+        <hosting_organization_title nil="true"></hosting_organization_title>
+        <facebook_link nil="true"></facebook_link>
+        <poster_url></poster_url>
+        <poster_url_root></poster_url_root>
+        <poster_fingerprint nil="true"></poster_fingerprint>
+        <seating></seating>
+        <ticket_status></ticket_status>
+        <date_unix type="integer">1408060800</date_unix>
+        <start_time_unix type="integer">1408129200</start_time_unix>
+        <end_time_unix type="integer">1408136400</end_time_unix>
+        <door_time_unix type="integer">1408125600</door_time_unix>
+        <categories type="array"/>
+        <show_types type="array"/>
+        <venue>
+            <community>SouthWest</community>
+            <id type="integer">708099</id>
+            <name>bar</name>
+            <street></street>
+            <city></city>
+            <province_state></province_state>
+            <country></country>
+            <postal_code></postal_code>
+            <longitude nil="true"></longitude>
+            <latitude nil="true"></latitude>
+            <google_maps_link nil="true"></google_maps_link>
+        </venue>
+        <performances type="array">
+            <performance>
+                <id>268174</id>
+                <artist>Ani DiFranco</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61091</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <rank></rank>
+            </performance>
+            <performance>
+                <id>268175</id>
+                <artist>Arcade Fire</artist>
+                <performance_type>Performance</performance_type>
+                <artist_id>61591</artist_id>
+                <description></description>
+                <external_artist_id_slug></external_artist_id_slug>
+                <rank></rank>
+            </performance>
+        </performances>
+        <contacts type="array"/>
+        <custom-fields type="array"/>
+    </show>
+</shows>

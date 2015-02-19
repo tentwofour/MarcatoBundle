@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="vendor/autoload.php"
+        >
+
+    <php>
+        <!-- Silence E_USER_DEPRECATED (-16385 == -1 & ~E_USER_DEPRECATED) -->
+        <ini name="error_reporting" value="-16385"/>
+        <server name="KERNEL_DIR" value="./test/Ten24/Tests/MarcatoIntegrationBundle/Fixtures/App/app" />
+    </php>
+    <testsuites>
+        <testsuite name="Ten24 MarcatoIntegrationBundle Test Suite">
+            <directory>./test/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./vendor</directory>
+                <directory>./Resources</directory>
+                <directory>./test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

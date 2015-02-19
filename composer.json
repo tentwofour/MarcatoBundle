@@ -1,0 +1,34 @@
+{
+  "name": "tentwofour/marcato-integration-bundle",
+  "type": "Symfony2 Bundle",
+  "description": "A Symfony2 bundle to integrate the Marcato Festival Management XML feeds into your application/website.",
+  "keywords": ["Symfony2", "Marcato", "tentwofour", "bundle"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Blair D. Patterson",
+      "homepage": "http://tentwentyfour.ca",
+      "email": "blair@tentwentyfour.ca"
+    }
+  ],
+  "require": {
+    "doctrine/orm": "~2.2,>=2.2.3",
+    "doctrine/doctrine-bundle": "~1.2",
+    "doctrine/doctrine-cache-bundle": "~1.0",
+    "guzzle/guzzle": "3.8.1",
+    "sensio/framework-extra-bundle": "~3.0",
+    "symfony/symfony": "~2.3",
+    "symfony/serializer": "~2.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "dev-master"
+  },
+  "autoload": {
+    "psr-0": { "Ten24\\MarcatoIntegrationBundle\\": "src" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
