@@ -56,12 +56,11 @@ EOF
         $synchronizer = $this->getContainer()->get('ten24_marcato_integration.synchronizer');
 
 
-        if (count($input->getArguments()) == 0)
-        {
+
             $output->writeln('Synchronizing all Marcato data');
             $synchronizer->synchronizeAll();
-        }
-        else
+
+        /*else
         {
             if ($input->getOption('artists'))
             {
@@ -92,6 +91,6 @@ EOF
                 $output->writeln('Synchronizing Workshop Marcato data');
                 $synchronizer->synchronizeWorkshops();
             }
-        }
+        }*/
     }
 }

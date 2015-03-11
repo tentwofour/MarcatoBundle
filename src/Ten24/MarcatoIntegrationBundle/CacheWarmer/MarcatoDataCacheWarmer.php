@@ -31,12 +31,12 @@ class MarcatoDataCacheWarmer implements CacheWarmerInterface
      */
     public function warmUp($cacheDir)
     {
-        $enabled = $this->getContainer()->getParameter('ten24_marcato_integration.enabled');
+        /*$enabled = $this->getContainer()->getParameter('ten24_marcato_integration.enabled');
 
         if ($enabled)
-        {
+        {*/
             $this->syncronizer->synchronize();
-        }
+        //}
     }
 
     /**
@@ -44,6 +44,6 @@ class MarcatoDataCacheWarmer implements CacheWarmerInterface
      */
     public function isOptional()
     {
-        return true;
+        return false;
     }
 }

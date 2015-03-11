@@ -99,7 +99,7 @@ class Downloader
         foreach ($this->validFeedTypes as $feedType)
         {
             // Check to make sure the feed type is enabled in the bundle config
-            if ($this->configuration[$feedType]['enabled'])
+            if ($this->configuration[$feedType])
             {
                 $url = $this->buildFeedUrl($feedType);
                 $out[$feedType] = $this->downloadXml($url);
