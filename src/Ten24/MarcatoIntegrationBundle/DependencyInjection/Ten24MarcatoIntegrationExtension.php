@@ -35,8 +35,10 @@ class Ten24MarcatoIntegrationExtension extends Extension
         $container->setParameter('ten24_marcato_integration.feeds.shows.enabled', $config['feeds_config']['shows']);
         $container->setParameter('ten24_marcato_integration.feeds.venues.enabled', $config['feeds_config']['venues']);
         $container->setParameter('ten24_marcato_integration.feeds.workshops.enabled', $config['feeds_config']['workshops']);
+
+        // @todo
         //$container->setParameter('ten24_marcato_integration.cache.provider', $config['cache']['provider']);
-        $container->setParameter('ten24_marcato_integration.cache.lifetime', $config['cache']['lifetime']);
+        //$container->setParameter('ten24_marcato_integration.cache.lifetime', $config['cache']['lifetime']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

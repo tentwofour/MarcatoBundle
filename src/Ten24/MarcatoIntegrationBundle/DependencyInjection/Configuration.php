@@ -13,18 +13,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * The default cache provider (from DoctrineCacheBundle)
-     * @var string
-
-    private $defaultCacheProvider;
-
-    public function __construct($cacheProvider = null)
-    {
-        $this->defaultCacheProvider = $cacheProvider;
-    }
-     */
-
-    /**
      * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
@@ -80,21 +68,6 @@ class Configuration implements ConfigurationInterface
 
                     ->end() // children
                 ->end() // arrayNode
-
-                ->arrayNode('cache')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        /*->scalarNode('provider')
-                            ->defaultValue($this->defaultCacheProvider)
-                        ->end()*/
-
-                        ->integerNode('lifetime')
-                            ->defaultValue(86400)
-                            ->info('The length of time before the cache is regenerated (default 1 day).')
-                        ->end()
-
-                    ->end() //children (of cache)
-                ->end() // of arrayNode('cache')
             ->end(); // Children (of root)
 
         return $treeBuilder;

@@ -8,6 +8,7 @@ use Ten24\MarcatoIntegrationBundle\Service\Synchronizer;
 /**
  * Class CacheWarmer
  * @package Ten24\MarcatoIntegrationBundle\Service
+ * @todo - this could download the XML data on cache warmup to save a bit of time?
  */
 class MarcatoDataCacheWarmer implements CacheWarmerInterface
 {
@@ -31,12 +32,8 @@ class MarcatoDataCacheWarmer implements CacheWarmerInterface
      */
     public function warmUp($cacheDir)
     {
-        /*$enabled = $this->getContainer()->getParameter('ten24_marcato_integration.enabled');
-
-        if ($enabled)
-        {*/
-            $this->syncronizer->synchronize();
-        //}
+        // @todo - call to the downloader to download and cache the XML from Marcato?
+        return;
     }
 
     /**
@@ -44,6 +41,6 @@ class MarcatoDataCacheWarmer implements CacheWarmerInterface
      */
     public function isOptional()
     {
-        return false;
+        return true;
     }
 }

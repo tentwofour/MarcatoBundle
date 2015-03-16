@@ -3,6 +3,7 @@
 namespace Ten24\MarcatoIntegrationBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -51,46 +52,137 @@ ten24_marcato_integration:
     enabled: true
 EOF
             );
+
+            exit(1);
         }
 
+        $feedsConfiguration = $this->getContainer()->getParameter('ten24_marcato_integration.feeds.configuration');
+        $organizationId = $this->getContainer()->getParameter('ten24_marcato_integration.organization_id');
         $synchronizer = $this->getContainer()->get('ten24_marcato_integration.synchronizer');
 
+        $output->writeln('Synchronizing Marcato data for organziation id: <info>' . $organizationId . '</info>');
 
+        ProgressBar::setFormatDefinition('skipped',
+            '[ %feedname% ] Skipped; specify the --%command_option% to synchronize this feed.');
+        ProgressBar::setFormatDefinition('not_configured',
+            '[ %feedname% ] Skipped; not enabled in your configuration.');
+        $progressBar = new ProgressBar($output, 5);
+        $progressBar->setMessage('Starting Synchronization', 'feedname');
+        $progressBar->setFormatDefinition('default', "[ %feedname% ] [%bar%] %elapsed:6s% %memory:6s%");
+        $progressBar->setFormat('default');
+        $progressBar->start();
 
-            $output->writeln('Synchronizing all Marcato data');
-            $synchronizer->synchronizeAll();
+        $optionsAreEmpty = (false === $input->getOption('artists') &&
+                            false === $input->getOption('contacts') &&
+                            false === $input->getOption('shows') &&
+                            false === $input->getOption('venues') &&
+                            false === $input->getOption('workshops'));
 
-        /*else
+        $progressBar->setMessage('Artists', 'feedname');
+
+        if (!$optionsAreEmpty && false === $input->getOption('artists'))
         {
-            if ($input->getOption('artists'))
+            $progressBar->setMessage('artists', 'command_option');
+            $progressBar->setFormat('skipped');
+        }
+        elseif ($optionsAreEmpty || true === $input->hasOption('artists'))
+        {
+            if (!$feedsConfiguration['artists'])
             {
-                $output->writeln('Synchronizing Artist Marcato data');
+                $progressBar->setFormat('not_configured');
+            }
+            else
+            {
                 $synchronizer->synchronizeArtists();
             }
+        }
 
-            if ($input->getOption('contacts'))
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->setMessage('Contacts', 'feedname');
+
+        if (!$optionsAreEmpty && false === $input->getOption('contacts'))
+        {
+            $progressBar->setMessage('contacts', 'command_option');
+            $progressBar->setFormat('skipped');
+        }
+        elseif ($optionsAreEmpty || false !== $input->hasOption('contacts'))
+        {
+            if (!$feedsConfiguration['contacts'])
             {
-                $output->writeln('Synchronizing Contact Marcato data');
+                $progressBar->setFormat('not_configured');
+            }
+            else
+            {
                 $synchronizer->synchronizeContacts();
             }
+        }
 
-            if ($input->getOption('shows'))
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->setMessage('Shows', 'feedname');
+
+        if (!$optionsAreEmpty && false === $input->getOption('shows'))
+        {
+            $progressBar->setMessage('shows', 'command_option');
+            $progressBar->setFormat('skipped');
+        }
+        elseif ($optionsAreEmpty || false !== $input->hasOption('shows'))
+        {
+            if (!$feedsConfiguration['shows'])
             {
-                $output->writeln('Synchronizing Show Marcato data');
+                $progressBar->setFormat('not_configured');
+            }
+            else
+            {
                 $synchronizer->synchronizeShows();
             }
+        }
 
-            if ($input->getOption('venues'))
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->setMessage('Venues', 'feedname');
+
+        if (!$optionsAreEmpty && false === $input->getOption('venues'))
+        {
+            $progressBar->setMessage('venues', 'command_option');
+            $progressBar->setFormat('skipped');
+        }
+        elseif ($optionsAreEmpty || false !== $input->hasOption('venues'))
+        {
+            if (!$feedsConfiguration['venues'])
             {
-                $output->writeln('Synchronizing Venue Marcato data');
+                $progressBar->setFormat('not_configured');
+            }
+            else
+            {
                 $synchronizer->synchronizeVenues();
             }
+        }
 
-            if ($input->getOption('workshops'))
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->setMessage('Workshops', 'feedname');
+
+        if (!$optionsAreEmpty && false === $input->getOption('workshops'))
+        {
+            $progressBar->setMessage('workshops', 'command_option');
+            $progressBar->setFormat('skipped');
+        }
+        elseif ($optionsAreEmpty || false !== $input->hasOption('workshops'))
+        {
+            if (!$feedsConfiguration['workshops'])
             {
-                $output->writeln('Synchronizing Workshop Marcato data');
+                $progressBar->setFormat('not_configured');
+            }
+            else
+            {
                 $synchronizer->synchronizeWorkshops();
             }
-        }*/
+        }
+
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->finish();
     }
 }
