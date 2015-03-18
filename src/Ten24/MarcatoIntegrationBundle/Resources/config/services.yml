@@ -82,3 +82,13 @@ services:
         class: %ten24_marcato_integration.datetime_handler.class%
         tags:
             - { name: jms_serializer.subscribing_handler }
+
+    # Repositories
+    # @todo - this is requiring the proxy service for the laziness...maybe it can be fixed?
+    ten24_marcato.repository.artist:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        lazy: true
+        arguments:
+            - Ten24\MarcatoIntegrationBundle\Entity\Artist
