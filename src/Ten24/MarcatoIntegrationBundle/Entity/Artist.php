@@ -418,7 +418,7 @@ class Artist extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
      * @return ArrayCollection
      */
@@ -561,5 +561,25 @@ class Artist extends AbstractEntity
         }
 
         return $this;
+    }
+
+    /**
+     * Shortcut to find a website by name,
+     * as they're stored in an ArrayCollection
+     */
+    public function getWebsiteByName($name = null)
+    {
+        if (null !== $name && count($this->websites) > 0)
+        {
+            foreach($this->websites as $website)
+            {
+                if ($website->getName() === $name)
+                {
+                    return $website->getUrl();
+                }
+            }
+        }
+
+        return null;
     }
 }
