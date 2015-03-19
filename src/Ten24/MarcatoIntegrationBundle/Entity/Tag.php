@@ -11,24 +11,14 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Table(name="ten24_marcato_tags")
  * @ORM\Entity(repositoryClass="Ten24\MarcatoIntegrationBundle\Repository\TagRepository")
  */
-class Tag //extends AbstractEntity
+class Tag extends AbstractEntity
 {
-    /**
-     * This model doesn't have a Marcato ID!
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Serializer\Exclude()
-     */
-    protected $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      * @Serializer\Type("string")
-     * @Serializer\SerializedName("category")
-     * @Serializer\XmlValue(cdata=false)
+     * @Serializer\SerializedName("name")
      */
     private $name;
 

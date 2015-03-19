@@ -7,15 +7,15 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * Contacts
  * Class to deal with JMS serialization/deserialization,
- * as the Marcato data always has a root of <contacts>,
- * which is a collection of <contact> nodes
+ * as the Marcato data always has a root of <tags>,
+ * which is a collection of <tag> nodes
  *
  */
 class Categories
 {
     /**
      * @Serializer\Type("array<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
-     * @Serializer\XmlList(entry="category")
+     * @Serializer\XmlList(entry="tag")
      */
     protected $tags;
 

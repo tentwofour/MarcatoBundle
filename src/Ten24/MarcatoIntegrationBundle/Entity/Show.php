@@ -173,11 +173,11 @@ class Show extends AbstractEntity
      * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge"})
      * @ORM\JoinTable(name="ten24_marcato_shows_tags",
      *      joinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", unique=true, nullable=false)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("categories")
+     * @Serializer\SerializedName("tags")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
-     * @Serializer\XmlList(entry="category", inline=false)
+     * @Serializer\XmlList(entry="tag", inline=false)
      */
     private $tags;
 

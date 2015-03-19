@@ -23,6 +23,7 @@ class SynchronizationCommand extends ContainerAwareCommand
             ->addOption('venues', null, InputOption::VALUE_NONE, 'Synchronize only the venues feed')
             ->addOption('workshops', null, InputOption::VALUE_NONE, 'Synchronize only the workshops feed')
             ->setDescription('Synchronizes Marcato data based on the configured organization id')
+            ->setAliases(array('ten24:marcato:sync'))
             ->setHelp(<<<EOF
 The <info>%command.name%</info> command synchronizes Marcato data.
 

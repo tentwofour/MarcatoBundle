@@ -78,7 +78,7 @@ class ArtistRepository extends EntityRepository
      * @param array $orderBy
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getFindAllByTagsQueryBuilder($tags = null, $orderBy = array('artist.name', 'ASC'))
+    public function getFindAllByTagsQueryBuilder($tags = null, $orderBy = array('artist.name', 'ASC'), $indexBy = null)
     {
         try
         {
@@ -86,7 +86,7 @@ class ArtistRepository extends EntityRepository
 
             if (null !== $tags)
             {
-                $qb = $this->getFullJoinQueryBuilder();
+                $qb = $this->getFullJoinQueryBuilder($indexBy);
 
                 return $qb->add('where', $qb->expr()->in('tags', ':tags'))
                           ->orderBy($orderBy[0], $orderBy[1])

@@ -57,6 +57,13 @@ class Artist extends AbstractEntity
     private $webPhotoFingerprint;
 
     /**
+     * @ORM\Column(name="ordering", type="integer", nullable=true)
+     * @Serializer\Type("integer")
+     * @Serializer\SerializedName("external_id_slug")
+     */
+    private $ordering;
+
+    /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true, options={"default" = null})
      * @Serializer\Type("DateTime")
      * @Serializer\SerializedName("updated_at")
@@ -117,19 +124,20 @@ class Artist extends AbstractEntity
     private $workshops;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", inversedBy="artist")
-     */
+     * @todo - a way to implement this?
+     * ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", inversedBy="artist")
     private $performances;
+     */
 
     /**
      * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge"})
      * @ORM\JoinTable(name="ten24_marcato_artists_tags",
      *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", unique=true, nullable=false)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("categories")
+     * @Serializer\SerializedName("tags")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
-     * @Serializer\XmlList(entry="category", inline=false)
+     * @Serializer\XmlList(entry="tag", inline=false)
      */
     private $tags;
 
@@ -138,7 +146,7 @@ class Artist extends AbstractEntity
      */
     public function __construct()
     {
-        $this->performances = new ArrayCollection();
+        //$this->performances = new ArrayCollection();
         $this->shows = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->workshops = new ArrayCollection();
@@ -262,6 +270,25 @@ class Artist extends AbstractEntity
     /**
      * @return mixed
      */
+    public function getOrdering()
+    {
+        return $this->ordering;
+    }
+
+    /**
+     * @param mixed $ordering
+     * @return Artist
+     */
+    public function setOrdering($ordering)
+    {
+        $this->ordering = $ordering;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
@@ -373,16 +400,17 @@ class Artist extends AbstractEntity
 
     /**
      * @return ArrayCollection
-     */
+
     public function getPerformances()
     {
         return $this->performances;
     }
+     */
 
     /**
      * @param ArrayCollection $performances
      * @return Artist
-     */
+
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
@@ -390,11 +418,12 @@ class Artist extends AbstractEntity
 
         return $this;
     }
+     */
 
     /**
      * @param Performance $performance
      * @return Artist
-     */
+
     public function addPerformance(Performance $performance)
     {
         if (!$this->workshops->contains($performance))
@@ -404,11 +433,12 @@ class Artist extends AbstractEntity
 
         return $this;
     }
+     */
 
     /**
      * @param Performance $performance
      * @return Artist
-     */
+
     public function removePerformance(Performance $performance)
     {
         if ($this->workshops->contains($performance))
@@ -418,6 +448,7 @@ class Artist extends AbstractEntity
 
         return $this;
     }
+     */
 
     /**
      * @return ArrayCollection
