@@ -30,6 +30,11 @@ class Downloader
     /**
      *
      */
+    const FEED_TYPE_PERFORMANCES = 'performances';
+
+    /**
+     *
+     */
     const FEED_TYPE_VENUES = 'venues';
 
     /**
@@ -69,6 +74,7 @@ class Downloader
     private $validFeedTypes = array(
         self::FEED_TYPE_ARTISTS,
         self::FEED_TYPE_CONTACTS,
+        self::FEED_TYPE_PERFORMANCES,
         self::FEED_TYPE_SHOWS,
         self::FEED_TYPE_VENUES,
         self::FEED_TYPE_WORKSHOPS
@@ -130,6 +136,19 @@ class Downloader
         if ($this->configuration[static::FEED_TYPE_CONTACTS])
         {
             $url = $this->buildFeedUrl(static::FEED_TYPE_CONTACTS);
+
+            return $this->downloadXml($url);
+        }
+    }
+
+    /**
+     * @return EntityBodyInterface|string
+     */
+    public function retrievePerformances()
+    {
+        if ($this->configuration[static::FEED_TYPE_PERFORMANCES])
+        {
+            $url = $this->buildFeedUrl(static::FEED_TYPE_PERFORMANCES);
 
             return $this->downloadXml($url);
         }

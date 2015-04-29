@@ -154,10 +154,19 @@ class Venue extends AbstractEntity
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Show", cascade={"persist", "merge"}, mappedBy="venue")
+     * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Show>")
+     * @Serializer\SerializedName("shows")
+     * @Serializer\XmlList(entry="show", inline=false)
+     */
+    private $shows;
+
+    /**
      *
      */
     public function __construct()
     {
+        $this->shows = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->websites = new ArrayCollection();
     }
@@ -506,6 +515,54 @@ class Venue extends AbstractEntity
         }
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getShows()
+    {
+        return $this->shows;
+    }
+
+    /**
+     * @param ArrayCollection $shows
+     * @return Venue
+     */
+    public function setShows(ArrayCollection $shows)
+    {
+        $this->shows->clear();
+        $this->shows = $shows;
+
+        return $this;
+    }
+
+    /**
+     * @param Show $show
+     * @return Venue
+     */
+    public function addShow(Show $show)
+    {
+        if (!$this->shows->contains($show))
+        {
+            $this->shows->add($show);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Show $show
+     * @return Venue
+     */
+    public function removeShow(Show $show)
+    {
+        if ($this->shows->contains($show))
+        {
+            $this->shows->removeElement($show);
+        }
+
+        return $this;
+    }
+    
     /**
      * @return ArrayCollection
      */

@@ -12,10 +12,20 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @ORM\Table(name="ten24_marcato_performances")
  * @ORM\Entity(repositoryClass="Ten24\MarcatoIntegrationBundle\Repository\PerformanceRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=true)
  * @Serializer\ExclusionPolicy("none")
  */
 class Performance extends AbstractEntity
 {
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime", options={"default" = NULL}, nullable=true)
+     * @Serializer\SerializedName("start_unix")
+     * @Serializer\Type("DateTime<'U'>")
+     */
+    private $startDate;
+
     /**
      * @var \DateTime
      *
@@ -24,6 +34,15 @@ class Performance extends AbstractEntity
      * @Serializer\Type("DateTime<'H:i A'>")
      */
     private $startTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime", options={"default" = NULL}, nullable=true)
+     * @Serializer\SerializedName("end_unix")
+     * @Serializer\Type("DateTime<'U'>")
+     */
+    private $endDate;
 
     /**
      * @var \DateTime
@@ -37,22 +56,34 @@ class Performance extends AbstractEntity
     /**
      * @var integer
      *
-     * @ORM\Column(name="position", type="integer", nullable=true)
+     * @ORM\Column(name="ordering", type="integer", nullable=true)
      * @Serializer\SerializedName("rank")
      * @Serializer\Type("integer")
      */
-    private $position;
+    private $ordering;
 
     /**
-     * @todo - Add a handler to join the Artist (<performanceDate>-<artistName>)
-     * @Gedmo\Slug(fields={"startTime"})
+     * @Gedmo\Slug(handlers={
+     *      @Gedmo\SlugHandler(class="Gedmo\Sluggable\Handler\RelativeSlugHandler", options={
+     *          @Gedmo\SlugHandlerOption(name="relationField", value="show"),
+     *          @Gedmo\SlugHandlerOption(name="relationSlugField", value="slug"),
+     *          @Gedmo\SlugHandlerOption(name="urilize", value=true)
+     *      })
+     * }, fields={"startDate"})
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
 
     /**
-     * Marcato doesn't output the entire artist here, just the name and artist_id, so there's no relation
-     * @ORM\Column(name="artist_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Artist", inversedBy="performances")
+     * @ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=true, unique=false, onDelete="CASCADE")
+     * @Serializer\Exclude()
+     */
+    private $artist;
+
+    /**
+     * @todo hack
+     * Temporary field, read from XML, and used to find the artist
      * @Serializer\SerializedName("artist_id")
      * @Serializer\Type("integer")
      */
@@ -61,15 +92,54 @@ class Performance extends AbstractEntity
     /**
      * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Show", inversedBy="performances", cascade={"persist", "merge"})
      * @ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false, unique=false, onDelete="CASCADE")
-     * @Serializer\Exclude()
+     * @Serializer\SerializedName("show_id")
+     * @Serializer\Type("integer")
      */
     private $show;
+
+    /**
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return Performance
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Get startTime
+     *
+     * @return \DateTime
+     */
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
 
     /**
      * Set startTime
      *
      * @param \DateTime $startTime
-     * @return ShowPerformance
+     * @return Performance
      */
     public function setStartTime($startTime)
     {
@@ -79,20 +149,43 @@ class Performance extends AbstractEntity
     }
 
     /**
-     * Get startTime
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return Performance
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
      *
      * @return \DateTime 
      */
-    public function getStartTime()
+    public function getEndDate()
     {
-        return $this->startTime;
+        return $this->endDate;
+    }
+
+    /**
+     * Get endTime
+     *
+     * @return \DateTime
+     */
+    public function getEndTime()
+    {
+        return $this->endTime;
     }
 
     /**
      * Set endTime
      *
      * @param \DateTime $endTime
-     * @return ShowPerformance
+     * @return Performance
      */
     public function setEndTime($endTime)
     {
@@ -102,36 +195,26 @@ class Performance extends AbstractEntity
     }
 
     /**
-     * Get endTime
+     * Set ordering
      *
-     * @return \DateTime 
+     * @param integer $ordering
+     * @return Performance
      */
-    public function getEndTime()
+    public function setOrdering($ordering)
     {
-        return $this->endTime;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     * @return ShowPerformance
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
+        $this->ordering = $ordering;
 
         return $this;
     }
 
     /**
-     * Get position
+     * Get ordering
      *
      * @return integer 
      */
-    public function getPosition()
+    public function getOrdering()
     {
-        return $this->position;
+        return $this->ordering;
     }
 
     /**
@@ -145,8 +228,7 @@ class Performance extends AbstractEntity
     }
 
     /**
-     * @return Artist
-
+     * @return integer
      */
     public function getArtistId()
     {
@@ -154,12 +236,31 @@ class Performance extends AbstractEntity
     }
 
     /**
-     * @param $artistId
+     * @param integer $artistId
      * @return Performance
      */
     public function setArtistId($artistId)
     {
         $this->artistId = $artistId;
+
+        return $this;
+    }
+
+    /**
+     * @return Artist
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @param Artist $artist
+     * @return Performance
+     */
+    public function setArtist(Artist $artist)
+    {
+        $this->artist = $artist;
 
         return $this;
     }
@@ -185,5 +286,28 @@ class Performance extends AbstractEntity
     public function getShow()
     {
         return $this->show;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param $deletedAt
+     * @return Performance
+     */
+    public function setDeletedAt(\DateTime $deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
     }
 }

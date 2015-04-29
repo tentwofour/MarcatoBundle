@@ -162,8 +162,8 @@ class Show extends AbstractEntity
     private $deletedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Venue", cascade={"persist", "merge"})
-     * @ORM\JoinColumn(name="venue_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Venue", inversedBy="shows", cascade={"persist", "merge"})
+     * @ORM\JoinColumn(name="venue_id", referencedColumnName="id", nullable=false, onDelete="SET NULL", unique=false)
      * @Serializer\Type("Ten24\MarcatoIntegrationBundle\Entity\Venue")
      * @Serializer\SerializedName("venue")
      */
@@ -175,7 +175,7 @@ class Show extends AbstractEntity
      *      joinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("tags")
+     *
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
      * @Serializer\XmlList(entry="tag", inline=false)
      */
@@ -184,7 +184,6 @@ class Show extends AbstractEntity
     /**
      * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="show", cascade={"persist", "merge"})
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Performance>")
-     * @Serializer\SerializedName("performances")
      * @Serializer\XmlList(entry="performance", inline=false)
      */
     private $performances;

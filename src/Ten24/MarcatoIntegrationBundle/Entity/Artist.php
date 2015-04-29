@@ -105,9 +105,7 @@ class Artist extends AbstractEntity
      *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
      *      inverseJoinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("shows")
-     * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Show>")
-     * @Serializer\XmlList(entry="show", inline=false)
+     * @Serializer\Exclude()
      */
     private $shows;
 
@@ -124,10 +122,12 @@ class Artist extends AbstractEntity
     private $workshops;
 
     /**
-     * @todo - a way to implement this?
-     * ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", inversedBy="artist")
-    private $performances;
+     * This field is not included in the artist feed from Marcato, so we exclude it
+     * It is included on the shows feed, as an XMLList, where each Performance has an artist_id field
+     * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="artist")
+     * @Serializer\Exclude()
      */
+    private $performances;
 
     /**
      * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge"})
@@ -142,15 +142,23 @@ class Artist extends AbstractEntity
     private $tags;
 
     /**
-     *
+     * Constructor
      */
     public function __construct()
     {
-        //$this->performances = new ArrayCollection();
+        $this->performances = new ArrayCollection();
         $this->shows = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->workshops = new ArrayCollection();
         $this->websites = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
@@ -400,17 +408,16 @@ class Artist extends AbstractEntity
 
     /**
      * @return ArrayCollection
-
+     */
     public function getPerformances()
     {
         return $this->performances;
     }
-     */
 
     /**
      * @param ArrayCollection $performances
      * @return Artist
-
+     */
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
@@ -418,12 +425,11 @@ class Artist extends AbstractEntity
 
         return $this;
     }
-     */
 
     /**
      * @param Performance $performance
      * @return Artist
-
+     */
     public function addPerformance(Performance $performance)
     {
         if (!$this->workshops->contains($performance))
@@ -433,12 +439,11 @@ class Artist extends AbstractEntity
 
         return $this;
     }
-     */
 
     /**
      * @param Performance $performance
      * @return Artist
-
+     */
     public function removePerformance(Performance $performance)
     {
         if ($this->workshops->contains($performance))
@@ -448,7 +453,6 @@ class Artist extends AbstractEntity
 
         return $this;
     }
-     */
 
     /**
      * @return ArrayCollection

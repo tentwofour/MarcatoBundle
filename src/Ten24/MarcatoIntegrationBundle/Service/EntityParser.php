@@ -18,6 +18,7 @@ class EntityParser
 
     const TYPE_ARTIST = 'Ten24\MarcatoIntegrationBundle\Entity\Artist';
     const TYPE_CONTACT = 'Ten24\MarcatoIntegrationBundle\Entity\Contact';
+    const TYPE_PERFORMANCE = 'Ten24\MarcatoIntegrationBundle\Entity\Performance';
     const TYPE_SHOW = 'Ten24\MarcatoIntegrationBundle\Entity\Show';
     const TYPE_VENUE = 'Ten24\MarcatoIntegrationBundle\Entity\Venue';
     const TYPE_WORKSHOP = 'Ten24\MarcatoIntegrationBundle\Entity\Workshop';
@@ -26,11 +27,12 @@ class EntityParser
      * @var array
      */
     private $feedToEntityMapping = array(
-        Downloader::FEED_TYPE_ARTISTS => self::TYPE_ARTIST,
-        Downloader::FEED_TYPE_CONTACTS => self::TYPE_CONTACT,
-        Downloader::FEED_TYPE_SHOWS => self::TYPE_SHOW,
-        Downloader::FEED_TYPE_VENUES => self::TYPE_VENUE,
-        Downloader::FEED_TYPE_WORKSHOPS => self::TYPE_WORKSHOP,
+        Downloader::FEED_TYPE_ARTISTS      => self::TYPE_ARTIST,
+        Downloader::FEED_TYPE_CONTACTS     => self::TYPE_CONTACT,
+        Downloader::FEED_TYPE_PERFORMANCES => self::TYPE_PERFORMANCE,
+        Downloader::FEED_TYPE_SHOWS        => self::TYPE_SHOW,
+        Downloader::FEED_TYPE_VENUES       => self::TYPE_VENUE,
+        Downloader::FEED_TYPE_WORKSHOPS    => self::TYPE_WORKSHOP,
     );
 
     /**
@@ -59,7 +61,7 @@ class EntityParser
         // ie. Artists, Workshops, Contacts, etc.
         // as the Marcato root XML node is one <artists> node
         // that contains a collection of <artist> nodes
-        $collectionEntityType = $entityType.'s';
+        $collectionEntityType = $entityType . 's';
 
         /** @var \JMS\Serializer\DeserializationContext $context */
         $context = DeserializationContext::create();

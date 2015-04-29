@@ -2,6 +2,7 @@
 
 namespace Ten24\MarcatoIntegrationBundle\Service;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -62,6 +63,11 @@ class Synchronizer
         if ($this->configuration['contacts'])
         {
             $this->synchronizeContacts(false);
+        }
+
+        if ($this->configuration['performances'])
+        {
+            $this->synchronizeShows(false);
         }
 
         if ($this->configuration['shows'])
@@ -152,6 +158,43 @@ class Synchronizer
     /**
      * @param bool $flush
      */
+    public function synchronizePerformances($flush = true)
+    {
+        if ($this->configuration['performances'])
+        {
+            $xml = $this->downloader->retrievePerformances();
+
+            /** @var \Ten24\MarcatoIntegrationBundle\Entity\Performances $shows */
+            $performances = $this->parser->parse(Downloader::FEED_TYPE_PERFORMANCES, $xml);
+
+            /**
+             * @todo this needs to check the current entities and do a diff against the newly parsed, and set the one's not found to un-published (locally)
+             */
+
+            /** @var \Ten24\MarcatoIntegrationBundle\Entity\Performance $performance */
+            foreach ($performances->getPerformances() as $performance)
+            {
+                $artist = $this->entityManager->getRepository('Ten24MarcatoIntegrationBundle:Artist')
+                                              ->find($performance->getArtistId());
+
+                if (null !== $artist)
+                {
+                    $performance->setArtist($artist);
+                }
+
+                $this->entityManager->merge($performance);
+            }
+
+            if ($flush)
+            {
+                $this->entityManager->flush();
+            }
+        }
+    }
+
+    /**
+     * @param bool $flush
+     */
     public function synchronizeShows($flush = true)
     {
         if ($this->configuration['shows'])
@@ -168,6 +211,20 @@ class Synchronizer
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Show $show */
             foreach ($shows->getShows() as $show)
             {
+                /**
+                 * @todo - this is a bit of a hack, so we can have ORM-based relations Artist <-> Performances
+                 */
+                foreach ($show->getPerformances() as $performance)
+                {
+                    $artist = $this->entityManager->getRepository('Ten24MarcatoIntegrationBundle:Artist')
+                                                  ->find($performance->getArtistId());
+
+                    if (null !== $artist)
+                    {
+                        $performance->setArtist($artist);
+                    }
+                }
+
                 $this->entityManager->merge($show);
             }
 
@@ -215,6 +272,14 @@ class Synchronizer
 
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Workshops $workshops */
             $workshops = $this->parser->parse(Downloader::FEED_TYPE_WORKSHOPS, $xml);
+            $workshops = $workshops->getWorkshops();
+
+            // Marcato's Ruby toXml() implementation will output a blank entity if there are no workshops
+            // So we return here, otherwise, we're trying to create a workshop without identifier
+            if (count($workshops == 1) && is_null($workshops[0]->getId()))
+            {
+                return;
+            }
 
             /**
              * @todo this needs to check the current entities and do a diff against the newly parsed, and set the one's not found to un-published (locally)
@@ -228,7 +293,7 @@ class Synchronizer
                 ->getRepository('Ten24MarcatoIntegrationBundle:Workshop')
                 ->findAll();
 
-            foreach($persistedEntities as $entity)
+            foreach ($persistedEntities as $entity)
             {
                 // If the persisted entity is not in the newly parsed ArrayCollection
                 // remove the persisted entity (softdeleteable)
@@ -239,7 +304,7 @@ class Synchronizer
             }
 
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Workshop $workshop */
-            foreach ($workshops->getWorkshops() as $workshop)
+            foreach ($workshops as $workshop)
             {
                 $this->entityManager->merge($workshop);
             }

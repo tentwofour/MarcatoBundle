@@ -92,3 +92,10 @@ services:
         lazy: true
         arguments:
             - Ten24\MarcatoIntegrationBundle\Entity\Artist
+
+    ten24_marcato.repository.performance:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Ten24\MarcatoIntegrationBundle\Entity\Performance
