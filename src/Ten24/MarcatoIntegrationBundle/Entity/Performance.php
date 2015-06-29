@@ -63,13 +63,22 @@ class Performance extends AbstractEntity
     private $ordering;
 
     /**
+     * @todo - can't have performance-slug-artist-slug-ordering here?
+     *
      * @Gedmo\Slug(handlers={
+     *      @Gedmo\SlugHandler(class="Gedmo\Sluggable\Handler\RelativeSlugHandler", options={
+     *          @Gedmo\SlugHandlerOption(name="relationField", value="artist"),
+     *          @Gedmo\SlugHandlerOption(name="relationSlugField", value="slug"),
+     *          @Gedmo\SlugHandlerOption(name="urilize", value=true),
+     *          @Gedmo\SlugHandlerOption(name="separator", value="-")
+     *      }),
      *      @Gedmo\SlugHandler(class="Gedmo\Sluggable\Handler\RelativeSlugHandler", options={
      *          @Gedmo\SlugHandlerOption(name="relationField", value="show"),
      *          @Gedmo\SlugHandlerOption(name="relationSlugField", value="slug"),
-     *          @Gedmo\SlugHandlerOption(name="urilize", value=true)
+     *          @Gedmo\SlugHandlerOption(name="urilize", value=true),
+     *          @Gedmo\SlugHandlerOption(name="separator", value="-")
      *      })
-     * }, fields={"startDate"})
+     * }, separator="-", updatable=true, fields={"ordering"})
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
@@ -118,7 +127,7 @@ class Performance extends AbstractEntity
     /**
      * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -164,7 +173,7 @@ class Performance extends AbstractEntity
     /**
      * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -210,7 +219,7 @@ class Performance extends AbstractEntity
     /**
      * Get ordering
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrdering()
     {
