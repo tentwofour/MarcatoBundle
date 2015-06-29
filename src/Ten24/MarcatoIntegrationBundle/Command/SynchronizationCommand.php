@@ -4,34 +4,38 @@ namespace Ten24\MarcatoIntegrationBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class SynchronizationCommand extends ContainerAwareCommand
 {
+
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
         $this
-            ->setName('ten24:marcato:synchronize')
+            ->setName('ten24:marcato:sync')
             ->addOption('artists', null, InputOption::VALUE_NONE, 'Synchronize only the artists feed')
             ->addOption('contacts', null, InputOption::VALUE_NONE, 'Synchronize only the contacts feed')
             ->addOption('shows', null, InputOption::VALUE_NONE, 'Synchronize only the shows feed')
             ->addOption('venues', null, InputOption::VALUE_NONE, 'Synchronize only the venues feed')
             ->addOption('workshops', null, InputOption::VALUE_NONE, 'Synchronize only the workshops feed')
-            ->setDescription('Synchronizes Marcato data based on the configured organization id')
-            ->setAliases(array('ten24:marcato:sync'))
+            ->addOption('clear-cache', null, InputOption::VALUE_NONE, 'Also clear and warm the application cache')
+            ->setDescription('Synchronizes Marcato data based on the configured organization id, optionally clearing the application cache (for cached templates).')
             ->setHelp(<<<EOF
 The <info>%command.name%</info> command synchronizes Marcato data.
 
-By default, all XML feeds are downloaded, parsed into associative arrays
-using Symfony's Serializer component, and saved to the application's
-cache directory (%kernel.cache_dir%) using Doctrine\Common\Cache\PHPFileCache.
+All XML feeds are downloaded, parsed with JMS Serializer, and inserted/replaced into your database.
 
 You can choose to only synchronize particular feeds using the options provided.
+
+You may also want to clear and warm the cache using the --clear-cache option, if your view layer caches any of the Marcato data.
+
 EOF
             );
     }
@@ -39,7 +43,8 @@ EOF
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input,
+                               OutputInterface $output)
     {
         $enabled = $this->getContainer()->getParameter('ten24_marcato_integration.enabled');
 
@@ -58,16 +63,16 @@ EOF
         }
 
         $feedsConfiguration = $this->getContainer()->getParameter('ten24_marcato_integration.feeds.configuration');
-        $organizationId = $this->getContainer()->getParameter('ten24_marcato_integration.organization_id');
-        $synchronizer = $this->getContainer()->get('ten24_marcato_integration.synchronizer');
+        $organizationId     = $this->getContainer()->getParameter('ten24_marcato_integration.organization_id');
+        $synchronizer       = $this->getContainer()->get('ten24_marcato_integration.synchronizer');
 
         $output->writeln('Synchronizing Marcato data for organziation id: <info>' . $organizationId . '</info>');
 
         ProgressBar::setFormatDefinition('skipped',
-            '[ %feedname% ] Skipped; specify the --%command_option% to synchronize this feed.');
+                                         '[ %feedname% ] Skipped; specify the --%command_option% to synchronize this feed.');
         ProgressBar::setFormatDefinition('not_configured',
-            '[ %feedname% ] Skipped; not enabled in your configuration.');
-        $progressBar = new ProgressBar($output, 5);
+                                         '[ %feedname% ] Skipped; not enabled in your configuration.');
+        $progressBar = new ProgressBar($output, 6);
         $progressBar->setMessage('Starting Synchronization', 'feedname');
         $progressBar->setFormatDefinition('default', "[ %feedname% ] [%bar%] %elapsed:6s% %memory:6s%");
         $progressBar->setFormat('default');
@@ -184,6 +189,23 @@ EOF
 
         $progressBar->advance();
         $progressBar->setFormat('default');
+
+
+        if ($input->getOption('clear-cache'))
+        {
+            $progressBar->setMessage('Clearing Cache', 'feedname');
+            $progressBar->display();
+
+            $env       = $this->getContainer()->getParameter('kernel.environment');
+            $subInput  = new ArgvInput(['--env=' . $env]);
+            $subOutput = new NullOutput();
+            $this->getContainer()->get('ten24_marcato_integration.command.cache.clear')->run($subInput, $subOutput);
+        }
+
+        $progressBar->advance();
+        $progressBar->setFormat('default');
+        $progressBar->setMessage('Sync Complete', 'feedname');
         $progressBar->finish();
+        $output->writeln("\n");
     }
 }

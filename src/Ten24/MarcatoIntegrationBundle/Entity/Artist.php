@@ -105,7 +105,9 @@ class Artist extends AbstractEntity
      *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
      *      inverseJoinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\Exclude()
+     * @Serializer\SerializedName("shows")
+     * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Show>")
+     * @Serializer\XmlList(entry="show", inline=false)
      */
     private $shows;
 

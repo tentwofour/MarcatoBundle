@@ -4,50 +4,18 @@ parameters:
     ten24_marcato_integration.parser.array.class: 'Ten24\MarcatoIntegrationBundle\Service\ArrayParser'
     ten24_marcato_integration.parser.entity.class: 'Ten24\MarcatoIntegrationBundle\Service\EntityParser'
     ten24_marcato_integration.synchronizer.class: 'Ten24\MarcatoIntegrationBundle\Service\Synchronizer'
+    ten24_marcato_integration.command.synchronization.class: 'Ten24\MarcatoIntegrationBundle\Command\SynchronizationCommand'
+    ten24_marcato_integration.command.cache.clear.class: 'Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand'
     ten24_marcato_integration.cache_warmer.class: 'Ten24\MarcatoIntegrationBundle\CacheWarmer\MarcatoDataCacheWarmer'
     ten24_marcato_integration.datetime_handler.class: 'Ten24\MarcatoIntegrationBundle\Serializer\Handler\DateHandler'
 
 services:
-    # Array cache provider
-    #ten24_marcato_integration.cache.adapter.array:
-    #    class: %doctrine_cache.array.class%
-
-    # PHP File cache provider
-    #ten24_marcato_integration.cache.adapter.php_file:
-    #    class: %doctrine_cache.php_file.class%
-    #    arguments:
-    #        - "%kernel.cache_dir%/ten24marcatointegration/"
-
-    # Array cache - in-memory only
-    #ten24_marcato_integration.cache_provider.array:
-    #    class: %ten24_marcato_integration.cache_provider.class%
-    #    arguments:
-    #        - @ten24_marcato_integration.cache.adapter.array
-    #        - %ten24_marcato_integration.cache.lifetime%
-
-    # PHP File cache
-    #ten24_marcato_integration.cache_provider.php_file:
-    #    class: %ten24_marcato_integration.cache_provider.class%
-    #    arguments:
-    #        - @ten24_marcato_integration.cache.adapter.php_file
-    #        - %ten24_marcato_integration.cache.lifetime%
-
-    # Default cache provider is PHPFile
-    #ten24_marcato_integration.cache_provider.default:
-    #    alias: ten24_marcato_integration.cache_provider.php_file
-
     # Downloader
     ten24_marcato_integration.downloader:
         class: %ten24_marcato_integration.downloader.class%
         arguments:
             - %ten24_marcato_integration.organization_id%
             - %ten24_marcato_integration.feeds.configuration%
-
-    # Array parser
-    #ten24_marcato_integration.parser.array:
-    #    class: %ten24_marcato_integration.parser.array.class%
-    #    arguments:
-    #        - %ten24_marcato_integration.organization_id%
 
     # Entity parser
     ten24_marcato_integration.parser.entity:
@@ -67,6 +35,18 @@ services:
             - @ten24_marcato_integration.parser.default
             - @doctrine.orm.entity_manager
             - %ten24_marcato_integration.feeds.configuration%
+
+    # Cache Clear Command as a service (used in Sync Command)
+    ten24_marcato_integration.command.cache.clear:
+        class: %ten24_marcato_integration.command.cache.clear.class%
+        calls:
+            - [ setContainer, [@service_container] ]
+
+    # Sync Command
+    ten24_marcato_integration.command.synchronization:
+        class: %ten24_marcato_integration.command.synchronization.class%
+        tags:
+            -  { name: console.command }
 
     # Cache Warmer - todo/not implemented
     #ten24_marcato_integration.cache_warmer:
