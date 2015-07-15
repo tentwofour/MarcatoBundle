@@ -4,9 +4,11 @@ namespace Ten24\MarcatoIntegrationBundle\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
+use Ten24\MarcatoIntegrationBundle\Entity\Performance;
 
 /**
  * Class Synchronizer
+ *
  * @package Ten24\MarcatoIntegrationBundle\Service
  */
 class Synchronizer
@@ -32,18 +34,18 @@ class Synchronizer
     private $configuration;
 
     /**
-     * @param Downloader $downloader
-     * @param EntityParser $parser
+     * @param Downloader    $downloader
+     * @param EntityParser  $parser
      * @param EntityManager $entityManager
-     * @param array $configuration
+     * @param array         $configuration
      */
     public function __construct(Downloader $downloader,
                                 EntityParser $parser,
                                 EntityManager $entityManager,
-                                array $configuration = array())
+                                array $configuration = [])
     {
-        $this->downloader = $downloader;
-        $this->parser = $parser;
+        $this->downloader    = $downloader;
+        $this->parser        = $parser;
         $this->entityManager = $entityManager;
         $this->configuration = $configuration;
     }
@@ -63,11 +65,6 @@ class Synchronizer
         if ($this->configuration['contacts'])
         {
             $this->synchronizeContacts(false);
-        }
-
-        if ($this->configuration['performances'])
-        {
-            $this->synchronizeShows(false);
         }
 
         if ($this->configuration['shows'])
@@ -90,6 +87,7 @@ class Synchronizer
 
     /**
      * shortcut
+     *
      * @see synchronizeAll
      */
     public function synchronize()
@@ -158,43 +156,7 @@ class Synchronizer
     /**
      * @param bool $flush
      */
-    public function synchronizePerformances($flush = true)
-    {
-        if ($this->configuration['performances'])
-        {
-            $xml = $this->downloader->retrievePerformances();
 
-            /** @var \Ten24\MarcatoIntegrationBundle\Entity\Performances $shows */
-            $performances = $this->parser->parse(Downloader::FEED_TYPE_PERFORMANCES, $xml);
-
-            /**
-             * @todo this needs to check the current entities and do a diff against the newly parsed, and set the one's not found to un-published (locally)
-             */
-
-            /** @var \Ten24\MarcatoIntegrationBundle\Entity\Performance $performance */
-            foreach ($performances->getPerformances() as $performance)
-            {
-                $artist = $this->entityManager->getRepository('Ten24MarcatoIntegrationBundle:Artist')
-                                              ->find($performance->getArtistId());
-
-                if (null !== $artist)
-                {
-                    $performance->setArtist($artist);
-                }
-
-                $this->entityManager->merge($performance);
-            }
-
-            if ($flush)
-            {
-                $this->entityManager->flush();
-            }
-        }
-    }
-
-    /**
-     * @param bool $flush
-     */
     public function synchronizeShows($flush = true)
     {
         if ($this->configuration['shows'])
@@ -209,19 +171,33 @@ class Synchronizer
              */
 
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Show $show */
+
             foreach ($shows->getShows() as $show)
             {
-                /**
-                 * @todo - this is a bit of a hack, so we can have ORM-based relations Artist <-> Performances
-                 */
-                foreach ($show->getPerformances() as $performance)
+
+                $old = $show->getPerformances();
+                $temp = clone $old;
+
+                foreach ($old as $o)
                 {
-                    $artist = $this->entityManager->getRepository('Ten24MarcatoIntegrationBundle:Artist')
-                                                  ->find($performance->getArtistId());
+                    $artist = $this->entityManager->find('Ten24MarcatoIntegrationBundle:Artist', $o->getArtistId());
 
                     if (null !== $artist)
                     {
-                        $performance->setArtist($artist);
+                        $o->addArtist($artist);
+                    }
+
+                    foreach($temp as $t)
+                    {
+                        if ($t !== $o && $t->getId() === $o->getId())
+                        {
+                            $artist = $this->entityManager->find('Ten24MarcatoIntegrationBundle:Artist', $t->getArtistId());
+
+                            if (null !== $artist)
+                            {
+                                $o->addArtist($artist);
+                            }
+                        }
                     }
                 }
 

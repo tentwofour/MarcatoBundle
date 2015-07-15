@@ -18,6 +18,7 @@ abstract class AbstractEntity
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @Serializer\Type("integer")
+     * @Serializer\SerializedName("id")
      */
     protected $id;
 

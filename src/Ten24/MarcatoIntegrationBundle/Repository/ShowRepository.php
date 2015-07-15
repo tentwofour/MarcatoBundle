@@ -38,9 +38,9 @@ class ShowRepository extends EntityRepository
     {
         $qb = $this->getQueryBuilder($indexBy);
 
-        return $qb->select('show', 'performances', 'artist')
+        return $qb->select('show', 'performances', 'artists')
                   ->leftJoin('show.performances', 'performances')
-                  ->leftJoin('performances.artist', 'artist');
+                  ->leftJoin('performances.artists', 'artists');
     }
 
     /**

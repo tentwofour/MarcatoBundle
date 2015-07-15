@@ -105,9 +105,7 @@ class Artist extends AbstractEntity
      *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
      *      inverseJoinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("shows")
-     * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Show>")
-     * @Serializer\XmlList(entry="show", inline=false)
+     * @Serializer\Exclude()
      */
     private $shows;
 
@@ -126,7 +124,7 @@ class Artist extends AbstractEntity
     /**
      * This field is not included in the artist feed from Marcato, so we exclude it
      * It is included on the shows feed, as an XMLList, where each Performance has an artist_id field
-     * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="artist")
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="artists", cascade={"persist", "merge"})
      * @Serializer\Exclude()
      */
     private $performances;
@@ -423,7 +421,11 @@ class Artist extends AbstractEntity
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
-        $this->performances = $performances;
+
+        foreach($performances as $performance)
+        {
+            $this->addPerformance($performance);
+        }
 
         return $this;
     }
@@ -434,9 +436,10 @@ class Artist extends AbstractEntity
      */
     public function addPerformance(Performance $performance)
     {
-        if (!$this->workshops->contains($performance))
+        if (!$this->performances->contains($performance))
         {
-            $this->workshops->add($performance);
+            $this->performances->add($performance);
+            $performance->addArtist($this);
         }
 
         return $this;
@@ -448,9 +451,10 @@ class Artist extends AbstractEntity
      */
     public function removePerformance(Performance $performance)
     {
-        if ($this->workshops->contains($performance))
+        if ($this->performances->contains($performance))
         {
-            $this->workshops->removeElement($performance);
+            $this->performances->removeElement($performance);
+            $performance->removeArtist($this);
         }
 
         return $this;

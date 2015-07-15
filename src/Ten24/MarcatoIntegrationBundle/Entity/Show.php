@@ -184,7 +184,7 @@ class Show extends AbstractEntity
     /**
      * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="show", cascade={"persist", "merge"})
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Performance>")
-     * @Serializer\XmlList(entry="performance", inline=false)
+     * @Serializer\XmlList(entry="performance")
      */
     private $performances;
 
@@ -576,6 +576,8 @@ class Show extends AbstractEntity
     {
         $this->venue = $venue;
 
+        $venue->addShow($this);
+
         return $this;
     }
 
@@ -650,7 +652,11 @@ class Show extends AbstractEntity
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
-        $this->performances = $performances;
+
+        foreach($performances as $performance)
+        {
+            $this->addPerformance($performance);
+        }
 
         return $this;
     }
@@ -666,6 +672,7 @@ class Show extends AbstractEntity
         if (!$this->performances->contains($performance))
         {
             $this->performances->add($performance);
+            $performance->setShow($this);
         }
 
         return $this;

@@ -154,7 +154,6 @@ class Downloader
         }
     }
 
-
     /**
      * @return EntityBodyInterface|string
      */

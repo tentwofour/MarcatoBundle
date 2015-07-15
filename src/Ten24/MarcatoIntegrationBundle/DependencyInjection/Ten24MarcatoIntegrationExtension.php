@@ -2,10 +2,10 @@
 
 namespace Ten24\MarcatoIntegrationBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -17,11 +17,12 @@ class Ten24MarcatoIntegrationExtension extends Extension
     /**
      * {@inheritDoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs,
+                         ContainerBuilder $container)
     {
         // Pass the default cache provider to the Configuration here.
         $configuration = new Configuration(
-            //$container->get('ten24_marcato_integration.cache.adapter.array')
+        //$container->get('ten24_marcato_integration.cache.adapter.array')
         );
 
         $config = $this->processConfiguration($configuration, $configs);
@@ -40,7 +41,7 @@ class Ten24MarcatoIntegrationExtension extends Extension
         //$container->setParameter('ten24_marcato_integration.cache.provider', $config['cache']['provider']);
         //$container->setParameter('ten24_marcato_integration.cache.lifetime', $config['cache']['lifetime']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
     }

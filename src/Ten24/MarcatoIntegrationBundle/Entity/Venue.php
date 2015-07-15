@@ -157,7 +157,7 @@ class Venue extends AbstractEntity
      * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Show", cascade={"persist", "merge"}, mappedBy="venue")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Show>")
      * @Serializer\SerializedName("shows")
-     * @Serializer\XmlList(entry="show", inline=false)
+     * @Serializer\XmlList(entry="show")
      */
     private $shows;
 
@@ -544,6 +544,8 @@ class Venue extends AbstractEntity
         if (!$this->shows->contains($show))
         {
             $this->shows->add($show);
+
+            $show->setVenue($this);
         }
 
         return $this;
