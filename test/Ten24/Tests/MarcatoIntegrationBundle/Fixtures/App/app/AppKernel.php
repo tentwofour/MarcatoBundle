@@ -10,6 +10,8 @@ class AppKernel extends Kernel
         return array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
             new Ten24\MarcatoIntegrationBundle\Ten24MarcatoIntegrationBundle()
         );
     }

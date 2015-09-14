@@ -15,14 +15,14 @@
     "doctrine/orm": "~2.2,>=2.2.3",
     "doctrine/doctrine-bundle": "~1.2",
     "doctrine/doctrine-cache-bundle": "~1.0",
-    "guzzle/guzzle": "3.8.1",
+    "guzzle/guzzle": "~3.9",
     "sensio/framework-extra-bundle": "~3.0",
     "symfony/symfony": "~2.3",
     "symfony/serializer": "~2.3",
     "jms/serializer-bundle": "0.13.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "dev-master"
+    "phpunit/phpunit": "4.7.*"
   },
   "autoload": {
     "psr-0": { "Ten24\\MarcatoIntegrationBundle\\": "src" }

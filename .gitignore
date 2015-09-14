@@ -1,5 +1,5 @@
 # Managed by Composer
-/vendor/
+vendor
 
 phpunit.xml
 

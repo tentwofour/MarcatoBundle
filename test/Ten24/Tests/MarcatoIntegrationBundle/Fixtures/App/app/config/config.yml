@@ -8,5 +8,16 @@ framework:
     translator:      { fallback: en }
     profiler:        { only_exceptions: false }
 
+doctrine:
+    dbal:
+        driver:  pdo_sqlite
+        user:    test
+        path:    %kernel.root_dir%/sqlite.db.cache
+        #memory: true
+        charset: utf8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
 ten24_marcato_integration:
     organization_id: 8
