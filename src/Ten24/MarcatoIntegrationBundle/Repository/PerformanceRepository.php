@@ -38,7 +38,8 @@ class PerformanceRepository extends EntityRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\ORMException
      */
-    public function findOneJoinAll($id = null, $orderBy = 'show.date ASC, performance.startDate ASC, artists.name ASC',
+    public function findOneJoinAll($id = null,
+                                   $orderBy = 'show.date ASC, performance.startDate ASC, artists.name ASC',
                                    $hydrationMode = Query::HYDRATE_OBJECT)
     {
         if (null === $id)
@@ -49,8 +50,8 @@ class PerformanceRepository extends EntityRepository
         $qb = $this->getFullJoinQueryBuilder();
 
         $qb->add('where', $qb->expr()->eq('performance.id', ':id'))
-            ->add('orderBy', $orderBy)
-            ->setParameter('id', $id);
+           ->add('orderBy', $orderBy)
+           ->setParameter('id', $id);
 
         return $qb->getQuery()->getOneOrNullResult();
     }

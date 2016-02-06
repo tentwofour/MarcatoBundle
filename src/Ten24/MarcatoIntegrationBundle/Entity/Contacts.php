@@ -21,6 +21,7 @@ class Contacts
 
     /**
      * Get an array of Ten24\MarcatoIntegrationBundle\Entity\Contact
+     *
      * @return array
      */
     public function getContacts()

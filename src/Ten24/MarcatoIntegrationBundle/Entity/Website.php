@@ -16,6 +16,7 @@ class Website //extends AbstractEntity
     /**
      * This model doesn't have a Marcato ID!
      * @ORM\Column(name="id", type="integer")
+     *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Serializer\Exclude()
@@ -47,22 +48,9 @@ class Website //extends AbstractEntity
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Website
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -70,14 +58,15 @@ class Website //extends AbstractEntity
     }
 
     /**
-     * Set url
+     * Set name
      *
-     * @param string $url
+     * @param string $name
+     *
      * @return Website
      */
-    public function setUrl($url)
+    public function setName($name)
     {
-        $this->url = $url;
+        $this->name = $name;
 
         return $this;
     }
@@ -90,5 +79,19 @@ class Website //extends AbstractEntity
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Website
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }

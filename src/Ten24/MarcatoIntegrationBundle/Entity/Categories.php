@@ -21,6 +21,7 @@ class Categories
 
     /**
      * Get an array of Ten24\MarcatoIntegrationBundle\Entity\Tag
+     *
      * @return array
      */
     public function getTags()

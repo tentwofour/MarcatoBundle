@@ -1,0 +1,8 @@
+liip_imagine:
+    filter_sets:
+        artist_show:
+            data_loader: ten24_rff_imagine_marcato_loader
+            cache: ten24_rff_imagine_marcato_resolver
+            quality: 80
+            filters:
+                relative_resize: { widen: 600 }

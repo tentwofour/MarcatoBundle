@@ -147,6 +147,7 @@ class Performance extends AbstractEntity
      * Set startDate
      *
      * @param \DateTime $startDate
+     *
      * @return Performance
      */
     public function setStartDate($startDate)
@@ -170,6 +171,7 @@ class Performance extends AbstractEntity
      * Set endDate
      *
      * @param \DateTime $endDate
+     *
      * @return Performance
      */
     public function setEndDate($endDate)
@@ -213,6 +215,7 @@ class Performance extends AbstractEntity
      * Set ordering
      *
      * @param integer $ordering
+     *
      * @return Performance
      */
     public function setOrdering($ordering)
@@ -252,6 +255,7 @@ class Performance extends AbstractEntity
 
     /**
      * @param integer $artistId
+     *
      * @return Performance
      */
     public function setArtistId($artistId)
@@ -282,7 +286,7 @@ class Performance extends AbstractEntity
 
         $this->artists->clear();
 
-        foreach($artists as $artist)
+        foreach ($artists as $artist)
         {
             $this->addArtist($artist);
         }
@@ -320,6 +324,7 @@ class Performance extends AbstractEntity
      * Set show
      *
      * @param Show $show
+     *
      * @return Performance
      */
     public function setShow($show)
@@ -353,6 +358,7 @@ class Performance extends AbstractEntity
      * Set deletedAt
      *
      * @param $deletedAt
+     *
      * @return Performance
      */
     public function setDeletedAt(\DateTime $deletedAt)
@@ -367,10 +373,10 @@ class Performance extends AbstractEntity
      */
     public function ensureArtistsArrayCollection()
     {
-       if (!$this->artists instanceof ArrayCollection)
-       {
-           $this->artists = new ArrayCollection();
-       }
+        if (!$this->artists instanceof ArrayCollection)
+        {
+            $this->artists = new ArrayCollection();
+        }
     }
 
     /**
@@ -381,12 +387,12 @@ class Performance extends AbstractEntity
         $out = '';
 
         /**
-         * @var  $index
+         * @var                                               $index
          * @var \Ten24\MarcatoIntegrationBundle\Entity\Artist $artist
          */
-        foreach($this->getArtists() as $index => $artist)
+        foreach ($this->getArtists() as $index => $artist)
         {
-            $out .= $artist->getName().(($index + 1) != count($this->getArtists()) ? $separator : '');
+            $out .= $artist->getName() . (($index + 1) != count($this->getArtists()) ? $separator : '');
         }
 
         return $out;

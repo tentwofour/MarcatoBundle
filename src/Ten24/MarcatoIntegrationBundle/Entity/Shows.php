@@ -21,6 +21,7 @@ class Shows
 
     /**
      * Get an array of Ten24\MarcatoIntegrationBundle\Entity\Show
+     *
      * @return array
      */
     public function getShows()

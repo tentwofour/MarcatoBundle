@@ -21,6 +21,7 @@ class Workshops
 
     /**
      * Get an array of Ten24\MarcatoIntegrationBundle\Entity\Workshop
+     *
      * @return array
      */
     public function getWorkshops()

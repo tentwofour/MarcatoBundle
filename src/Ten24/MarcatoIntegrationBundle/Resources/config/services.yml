@@ -79,3 +79,19 @@ services:
         factory_method: getRepository
         arguments:
             - Ten24\MarcatoIntegrationBundle\Entity\Performance
+
+    # Remote stream loader for Marcato
+    ten24_marcato_integration.imagine.marcato.loader:
+        class: Ten24\MarcatoIntegrationBundle\Imagine\RemoteStreamLoader
+        arguments:
+            - "@liip_imagine"
+            - ''
+        tags:
+            - { name: 'liip_imagine.data.loader', loader: 'ten24_marcato_imagine_marcato_loader' }
+
+    # Remote Media Cache Resolver
+    ten24_marcato_integration.imagine.resolver.remotecache:
+        class: Ten24\MarcatoIntegrationBundle\Imagine\RemoteCacheResolver
+        arguments: [@filesystem]
+        tags:
+            - { name: liip_imagine.cache.resolver, resolver: 'ten24_marcato_imagine_marcato_resolver' }

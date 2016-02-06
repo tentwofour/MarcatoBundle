@@ -8,18 +8,21 @@ use Doctrine\ORM\Query;
 
 /**
  * Class ArtistRepository
+ *
  * @package Ten24\MarcatoIntegrationBundle\Repository
  */
 class ArtistRepository extends EntityRepository
 {
     /**
      * We hydrate by object here, because there are helper methods like getWebsiteByName() in the Artist model
+     *
      * @param array $orderBy
-     * @param int $hydrationMode
+     * @param int   $hydrationMode
+     *
      * @return array
      */
     public function findAllJoinAll($indexBy = null,
-                                   array $orderBy = array('artist.name', 'ASC'),
+                                   array $orderBy = ['artist.name', 'ASC'],
                                    $hydrationMode = Query::HYDRATE_OBJECT)
     {
         return $this->getFullJoinQueryBuilder($indexBy)
@@ -30,11 +33,14 @@ class ArtistRepository extends EntityRepository
 
     /**
      * We hydrate by object here, because there are helper methods like getWebsiteByName() in the Artist model
+     *
      * @param null $slug
-     * @param int $hydrationMode
+     * @param int  $hydrationMode
+     *
      * @return array
      */
-    public function findOneBySlugJoinAll($slug = null, $hydrationMode = Query::HYDRATE_OBJECT)
+    public function findOneBySlugJoinAll($slug = null,
+                                         $hydrationMode = Query::HYDRATE_OBJECT)
     {
         return $this->getFullJoinQueryBuilder()
                     ->where('artist.slug = :slug')
@@ -45,10 +51,13 @@ class ArtistRepository extends EntityRepository
 
     /**
      * We hydrate by object here, because there are helper methods like getWebsiteByName() in the Artist model
+     *
      * @param int $hydrationMode
+     *
      * @return array
      */
-    public function findAllOrderByNameAsc($indexBy = 'slug', $hydrationMode = Query::HYDRATE_OBJECT)
+    public function findAllOrderByNameAsc($indexBy = 'slug',
+                                          $hydrationMode = Query::HYDRATE_OBJECT)
     {
         return $this->getFindAllOrderByNameAscQuery($indexBy)
                     ->getResult($hydrationMode);
@@ -57,13 +66,15 @@ class ArtistRepository extends EntityRepository
     /**
      * Get All Artists by Tag(s)
      * We hydrate by object here, because there are helper methods like getWebsiteByName() in the Artist model
+     *
      * @param mixed $tags
      * @param array $orderBy
-     * @param int $hydrationMode
+     * @param int   $hydrationMode
+     *
      * @return array
      */
     public function findAllByTags($tags = null,
-                                  $orderBy = array('artist.name', 'ASC'),
+                                  $orderBy = ['artist.name', 'ASC'],
                                   $hydrationMode = Query::HYDRATE_OBJECT)
     {
         return $this->getFindAllByTagsQueryBuilder($tags, $orderBy)
@@ -74,11 +85,14 @@ class ArtistRepository extends EntityRepository
     /**
      * Get the query builder object for the findAllByTags
      * Useful for PagerFanta's ORMAdapter class for pagination
+     *
      * @param mixed $tags
      * @param array $orderBy
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getFindAllByTagsQueryBuilder($tags = null, $orderBy = array('artist.name', 'ASC'))
+    public function getFindAllByTagsQueryBuilder($tags = null,
+                                                 $orderBy = ['artist.name', 'ASC'])
     {
         try
         {
@@ -93,7 +107,7 @@ class ArtistRepository extends EntityRepository
                           ->setParameter('tags', $tags);
             }
         }
-        catch(\LogicException $e)
+        catch (\LogicException $e)
         {
             throw $e;
         }
@@ -101,7 +115,9 @@ class ArtistRepository extends EntityRepository
 
     /**
      * Get query object for findAllOrderByNameAsc method
+     *
      * @param string $indexBy
+     *
      * @return Query
      */
     public function getFindAllOrderByNameAscQuery($indexBy = 'slug')
@@ -113,7 +129,9 @@ class ArtistRepository extends EntityRepository
 
     /**
      * Join everything, return the QueryBuilder object
+     *
      * @param $indexBy
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getFullJoinQueryBuilder($indexBy = 'slug')
@@ -129,6 +147,7 @@ class ArtistRepository extends EntityRepository
 
     /**
      * Join everything, return the Query
+     *
      * @return Query
      */
     public function getFullJoinQuery()
@@ -141,7 +160,7 @@ class ArtistRepository extends EntityRepository
      */
     protected function getQueryBuilder($indexBy = 'slug')
     {
-        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb      = $this->getEntityManager()->createQueryBuilder();
         $indexBy = (null !== $indexBy) ? 'artist.' . $indexBy : null;
 
         return $qb->select('artist')
@@ -151,7 +170,9 @@ class ArtistRepository extends EntityRepository
     /**
      * Parse an Array or PersistentCollection to a single scalar array
      * for use in whereIn() queries
+     *
      * @param null $arrayOrCollection
+     *
      * @return null
      * @throws LogicException
      */
@@ -179,7 +200,7 @@ class ArtistRepository extends EntityRepository
             // Multi dimensional, ie. PersistentCollection->toArray()
             if (is_array($arrayOrCollection[0]))
             {
-                foreach($arrayOrCollection as $index => $value)
+                foreach ($arrayOrCollection as $index => $value)
                 {
                     // $item is the nested (possibly associative) array,
                     // look for an 'id' key
@@ -197,10 +218,10 @@ class ArtistRepository extends EntityRepository
                     else
                     {
                         throw new \LogicException(sprintf('%s expects the "%s" argument to be of type "%s" or "%s"',
-                            __METHOD__,
-                            'tags',
-                            'PersistentCollection',
-                            'array'));
+                                                          __METHOD__,
+                                                          'tags',
+                                                          'PersistentCollection',
+                                                          'array'));
                     }
                 }
             }
@@ -208,10 +229,10 @@ class ArtistRepository extends EntityRepository
         else
         {
             throw new \LogicException(sprintf('%s expects the "%s" argument to be of type "%s" or "%s"',
-                __METHOD__,
-                'tags',
-                'PersistentCollection',
-                'array'));
+                                              __METHOD__,
+                                              'tags',
+                                              'PersistentCollection',
+                                              'array'));
         }
 
         return $arrayOrCollection;

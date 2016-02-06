@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 /**
  * Class WorkshopRepository
+ *
  * @package Ten24\MarcatoIntegrationBundle\Repository
  */
 class WorkshopRepository extends EntityRepository

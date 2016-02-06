@@ -7,8 +7,9 @@ use Ten24\MarcatoIntegrationBundle\Service\Synchronizer;
 
 /**
  * Class CacheWarmer
+ *
  * @package Ten24\MarcatoIntegrationBundle\Service
- * @todo - this could download the XML data on cache warmup to save a bit of time?
+ * @todo    - this could download the XML data on cache warmup to save a bit of time?
  */
 class MarcatoDataCacheWarmer implements CacheWarmerInterface
 {

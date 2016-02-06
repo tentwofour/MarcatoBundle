@@ -16,7 +16,8 @@ class CacheProvider
      */
     private $lifetime;
 
-    public function __construct(Cache $cache = null, $lifetime = 0)
+    public function __construct(Cache $cache = null,
+                                $lifetime = 0)
     {
         //die(print_r(get_class_methods($cache)));
         $this->cache = $cache;
@@ -26,45 +27,72 @@ class CacheProvider
 
     /**
      * @param array $data
+     *
      * @return bool
      */
-    public function setArtists(array $data = array())
+    public function setArtists(array $data = [])
     {
         return $this->cache(Downloader::FEED_TYPE_ARTISTS, $data);
     }
 
     /**
-     * @param array $data
+     * @param null $feedType
+     * @param      $data
+     *
      * @return bool
      */
-    public function setContacts(array $data = array())
+    private function cache($feedType = null,
+                           array $data = [])
+    {
+        if (null === $feedType)
+        {
+            throw new \InvalidArgumentException('You must pass a valid feed type, one of Downloader::FEED_TYPE_XXX');
+        }
+
+        if (null === $data || count($data) < 0)
+        {
+            throw new \InvalidArgumentException('The passed data is not an array, or an empty array.');
+        }
+
+        return $this->cache->save($feedType, $data, $this->lifetime);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function setContacts(array $data = [])
     {
         return $this->cache(Downloader::FEED_TYPE_CONTACTS, $data);
     }
 
     /**
      * @param array $data
+     *
      * @return bool
      */
-    public function setShows(array $data = array())
+    public function setShows(array $data = [])
     {
         return $this->cache(Downloader::FEED_TYPE_SHOWS, $data);
     }
 
     /**
      * @param array $data
+     *
      * @return bool
      */
-    public function setVenues(array $data = array())
+    public function setVenues(array $data = [])
     {
         return $this->cache(Downloader::FEED_TYPE_VENUES, $data);
     }
 
     /**
      * @param array $data
+     *
      * @return bool
      */
-    public function setWorkshops(array $data = array())
+    public function setWorkshops(array $data = [])
     {
         return $this->cache(Downloader::FEED_TYPE_WORKSHOPS, $data);
     }
@@ -74,10 +102,10 @@ class CacheProvider
      */
     public function deleteAll()
     {
-        $artists = $this->deleteArtists();
-        $contacts = $this->deleteContacts();
-        $shows = $this->deleteShows();
-        $venues = $this->deleteVenues();
+        $artists   = $this->deleteArtists();
+        $contacts  = $this->deleteContacts();
+        $shows     = $this->deleteShows();
+        $venues    = $this->deleteVenues();
         $workshops = $this->deleteWorkshops();
 
         return ($artists && $contacts && $shows && $venues && $workshops);
@@ -128,13 +156,13 @@ class CacheProvider
      */
     public function getAll()
     {
-        return array(
+        return [
             Downloader::FEED_TYPE_ARTISTS   => $this->getArtists(),
             Downloader::FEED_TYPE_CONTACTS  => $this->getContacts(),
             Downloader::FEED_TYPE_SHOWS     => $this->getShows(),
             Downloader::FEED_TYPE_VENUES    => $this->getVenues(),
             Downloader::FEED_TYPE_WORKSHOPS => $this->getWorkshops(),
-        );
+        ];
     }
 
     /**
@@ -175,25 +203,5 @@ class CacheProvider
     public function getWorkshops()
     {
         return $this->cache->fetch(Downloader::FEED_TYPE_WORKSHOPS);
-    }
-
-    /**
-     * @param null $feedType
-     * @param $data
-     * @return bool
-     */
-    private function cache($feedType = null, array $data = array())
-    {
-        if (null === $feedType)
-        {
-            throw new \InvalidArgumentException('You must pass a valid feed type, one of Downloader::FEED_TYPE_XXX');
-        }
-
-        if (null === $data || count($data) < 0)
-        {
-            throw new \InvalidArgumentException('The passed data is not an array, or an empty array.');
-        }
-
-        return $this->cache->save($feedType, $data, $this->lifetime);
     }
 }

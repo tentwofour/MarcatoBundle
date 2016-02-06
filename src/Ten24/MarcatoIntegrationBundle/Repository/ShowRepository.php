@@ -8,30 +8,37 @@ use Ten24\MarcatoIntegrationBundle\Entity\Venue;
 
 /**
  * Class PerformanceRepository
+ *
  * @package Ten24\MarcatoIntegrationBundle\Repository
  */
 class ShowRepository extends EntityRepository
 {
     /**
      * Find all shows at a particular venue, ordered by show.date ASC, performance.ordering ASC
+     *
      * @param Venue $venue
-     * @param int $hydrationMode
+     * @param int   $hydrationMode
+     *
      * @return array
      */
-    public function findAllForVenue(Venue $venue, $orderBy = 'show.date ASC, performances.ordering ASC', $hydrationMode = Query::HYDRATE_ARRAY)
+    public function findAllForVenue(Venue $venue,
+                                    $orderBy = 'show.date ASC, performances.ordering ASC',
+                                    $hydrationMode = Query::HYDRATE_ARRAY)
     {
         $qb = $this->getFullJoinQueryBuilder();
 
         $qb->add('where', $qb->expr()->eq('show.venue', ':venue'))
-            ->add('orderBy', $orderBy)
-            ->setParameter('venue', $venue);
+           ->add('orderBy', $orderBy)
+           ->setParameter('venue', $venue);
 
         return $qb->getQuery()->getResult($hydrationMode);
     }
 
     /**
      * Join everything, return the QueryBuilder object
+     *
      * @param $indexBy
+     *
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function getFullJoinQueryBuilder($indexBy = 'slug')
@@ -45,6 +52,7 @@ class ShowRepository extends EntityRepository
 
     /**
      * Join everything, return the Query
+     *
      * @return Query
      */
     public function getFullJoinQuery()
@@ -57,7 +65,7 @@ class ShowRepository extends EntityRepository
      */
     protected function getQueryBuilder($indexBy = 'slug')
     {
-        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb      = $this->getEntityManager()->createQueryBuilder();
         $indexBy = (null !== $indexBy) ? 'show.' . $indexBy : null;
 
         return $qb->select('show')

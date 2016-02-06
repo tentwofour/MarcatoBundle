@@ -182,6 +182,7 @@ class Workshop extends AbstractEntity
      * Set name
      *
      * @param string $name
+     *
      * @return Show
      */
     public function setName($name)
@@ -205,6 +206,7 @@ class Workshop extends AbstractEntity
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Show
      */
     public function setDate($date)
@@ -228,6 +230,7 @@ class Workshop extends AbstractEntity
      * Set description
      *
      * @param string $description
+     *
      * @return Show
      */
     public function setDescription($description)
@@ -251,6 +254,7 @@ class Workshop extends AbstractEntity
      * Set price
      *
      * @param string $price
+     *
      * @return Show
      */
     public function setPrice($price)
@@ -274,6 +278,7 @@ class Workshop extends AbstractEntity
      * Set ticketInfo
      *
      * @param string $ticketInfo
+     *
      * @return Show
      */
     public function setTicketInfo($ticketInfo)
@@ -297,6 +302,7 @@ class Workshop extends AbstractEntity
      * Set ticketLink
      *
      * @param string $ticketLink
+     *
      * @return Show
      */
     public function setTicketLink($ticketLink)
@@ -320,6 +326,7 @@ class Workshop extends AbstractEntity
      * Set ticketStatus
      *
      * @param string $ticketStatus
+     *
      * @return Show
      */
     public function setTicketStatus($ticketStatus)
@@ -343,6 +350,7 @@ class Workshop extends AbstractEntity
      * Set seating
      *
      * @param string $seating
+     *
      * @return Show
      */
     public function setSeating($seating)
@@ -366,6 +374,7 @@ class Workshop extends AbstractEntity
      * Set startTime
      *
      * @param \DateTime $startTime
+     *
      * @return Show
      */
     public function setStartTime($startTime)
@@ -389,6 +398,7 @@ class Workshop extends AbstractEntity
      * Set endTime
      *
      * @param \DateTime $endTime
+     *
      * @return Show
      */
     public function setEndTime($endTime)
@@ -412,6 +422,7 @@ class Workshop extends AbstractEntity
      * Set doorTime
      *
      * @param \DateTime $doorTime
+     *
      * @return Show
      */
     public function setDoorTime($doorTime)
@@ -435,6 +446,7 @@ class Workshop extends AbstractEntity
      * Set facebookLink
      *
      * @param string $facebookLink
+     *
      * @return Show
      */
     public function setFacebookLink($facebookLink)
@@ -458,6 +470,7 @@ class Workshop extends AbstractEntity
      * Set posterUrl
      *
      * @param string $posterUrl
+     *
      * @return Show
      */
     public function setPosterUrl($posterUrl)
@@ -481,6 +494,7 @@ class Workshop extends AbstractEntity
      * Set posterFingerprint
      *
      * @param string $posterFingerprint
+     *
      * @return Show
      */
     public function setPosterFingerprint($posterFingerprint)
@@ -504,6 +518,7 @@ class Workshop extends AbstractEntity
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Show
      */
     public function setUpdatedAt($updatedAt)
@@ -525,6 +540,7 @@ class Workshop extends AbstractEntity
 
     /**
      * @param Venue $venue
+     *
      * @return Show
      */
     public function setVenue(Venue $venue)

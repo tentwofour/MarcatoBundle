@@ -6,7 +6,9 @@ class ArrayParser extends AbstractParser
 {
     /**
      * Parse passed XML into array
+     *
      * @param null $xml
+     *
      * @return mixed
      */
     public function parse($xml = null)
@@ -42,12 +44,15 @@ class ArrayParser extends AbstractParser
     /**
      * Cleans up the parsed XML - we don't really need the attributes, and the values
      * mapped should be moved up a level for ease-of-use in the application/templates
+     *
      * @param $data
+     *
      * @return mixed
      */
-    protected function cleanup($data, $depth = 0)
+    protected function cleanup($data,
+                               $depth = 0)
     {
-        foreach((array) $data as $key => $value)
+        foreach ((array)$data as $key => $value)
         {
             // unset any @xxx attribute, they're not needed
             // These are decoded by the XmlEncoder->decode to array elements like
@@ -62,9 +67,9 @@ class ArrayParser extends AbstractParser
             {
                 if ($depth == 0 && is_numeric($key) && array_key_exists('name', $value))
                 {
-                    $slug = strtolower(str_replace(' ', '-', $value['name']));
+                    $slug          = strtolower(str_replace(' ', '-', $value['name']));
                     $value['slug'] = $slug;
-                    $data[$slug] = $value;
+                    $data[$slug]   = $value;
                     unset($data[$key]);
 
                     $data[$slug] = $this->cleanup($value);
@@ -110,30 +115,30 @@ class ArrayParser extends AbstractParser
                 //        ),
                 if ($key === 'artist_types')
                 {
-                    $value = $data[$key] = (isset($value['artist_type'])) ? (array) $value['artist_type'] : array();
+                    $value = $data[$key] = (isset($value['artist_type'])) ? (array)$value['artist_type'] : [];
                 }
                 if ($key === 'categories')
                 {
-                    $value = $data[$key] = (isset($value['category'])) ? (array) $value['category'] : array();
+                    $value = $data[$key] = (isset($value['category'])) ? (array)$value['category'] : [];
                 }
                 elseif ($key === 'custom-fields')
                 {
-                    $value = $data[$key] = (isset($value['custom-field'])) ? (array) $value['custom-field'] : array();
+                    $value = $data[$key] = (isset($value['custom-field'])) ? (array)$value['custom-field'] : [];
                 }
                 elseif ($key === 'presentations')
                 {
-                    $value = $data[$key] = (isset($value['presentation'])) ? (array) $value['presentation'] : array();
+                    $value = $data[$key] = (isset($value['presentation'])) ? (array)$value['presentation'] : [];
                 }
                 elseif ($key === 'shows')
                 {
-                    $arr = array();
+                    $arr = [];
 
-                    if(isset($value['show']))
+                    if (isset($value['show']))
                     {
                         if (!isset($value['show'][0]))
                         {
                             // Single show
-                            $arr = array(0 => $value['show']);
+                            $arr = [0 => $value['show']];
                         }
                         else
                         {
@@ -146,19 +151,19 @@ class ArrayParser extends AbstractParser
                 }
                 elseif ($key === 'show-types')
                 {
-                    $value = $data[$key] = (isset($value['show-type'])) ? (array) $value['show-type'] : array();
+                    $value = $data[$key] = (isset($value['show-type'])) ? (array)$value['show-type'] : [];
                 }
                 elseif ($key === 'websites')
                 {
-                    $value = $data[$key] = (isset($value['website'])) ? (array) $value['website'] : array();
+                    $value = $data[$key] = (isset($value['website'])) ? (array)$value['website'] : [];
                 }
                 elseif ($key === 'workshops')
                 {
-                    $value = $data[$key] = (isset($value['workshop'])) ? (array) $value['workshop'] : array();
+                    $value = $data[$key] = (isset($value['workshop'])) ? (array)$value['workshop'] : [];
                 }
                 elseif ($key === 'workshop-types')
                 {
-                    $value = $data[$key] = (isset($value['workshop-type'])) ? (array) $value['workshop-type'] : array();
+                    $value = $data[$key] = (isset($value['workshop-type'])) ? (array)$value['workshop-type'] : [];
                 }
 
                 // Recurse on the $value array

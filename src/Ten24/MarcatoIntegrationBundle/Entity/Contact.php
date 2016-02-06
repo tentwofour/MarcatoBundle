@@ -106,6 +106,7 @@ class Contact extends AbstractEntity
      * Set name
      *
      * @param string $name
+     *
      * @return Contact
      */
     public function setName($name)
@@ -129,6 +130,7 @@ class Contact extends AbstractEntity
      * Set position
      *
      * @param string $position
+     *
      * @return Contact
      */
     public function setPosition($position)
@@ -152,6 +154,7 @@ class Contact extends AbstractEntity
      * Set biography
      *
      * @param string $biography
+     *
      * @return Contact
      */
     public function setBiography($biography)
@@ -164,7 +167,7 @@ class Contact extends AbstractEntity
     /**
      * Get biography
      *
-     * @return string 
+     * @return string
      */
     public function getBiography()
     {
@@ -175,6 +178,7 @@ class Contact extends AbstractEntity
      * Set company
      *
      * @param string $company
+     *
      * @return Contact
      */
     public function setCompany($company)
@@ -187,7 +191,7 @@ class Contact extends AbstractEntity
     /**
      * Get company
      *
-     * @return string 
+     * @return string
      */
     public function getCompany()
     {
@@ -198,6 +202,7 @@ class Contact extends AbstractEntity
      * Set industry
      *
      * @param string $industry
+     *
      * @return Contact
      */
     public function setIndustry($industry)
@@ -210,7 +215,7 @@ class Contact extends AbstractEntity
     /**
      * Get industry
      *
-     * @return string 
+     * @return string
      */
     public function getIndustry()
     {
@@ -221,6 +226,7 @@ class Contact extends AbstractEntity
      * Set photoUrl
      *
      * @param string $photoUrl
+     *
      * @return Contact
      */
     public function setPhotoUrl($photoUrl)
@@ -233,7 +239,7 @@ class Contact extends AbstractEntity
     /**
      * Get photoUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoUrl()
     {
@@ -244,6 +250,7 @@ class Contact extends AbstractEntity
      * Set photoFingerprint
      *
      * @param string $photoFingerprint
+     *
      * @return Contact
      */
     public function setPhotoFingerprint($photoFingerprint)
@@ -256,7 +263,7 @@ class Contact extends AbstractEntity
     /**
      * Get photoFingerprint
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoFingerprint()
     {
@@ -267,6 +274,7 @@ class Contact extends AbstractEntity
      * Set emailAddress
      *
      * @param string $emailAddress
+     *
      * @return Contact
      */
     public function setEmailAddress($emailAddress)
@@ -279,7 +287,7 @@ class Contact extends AbstractEntity
     /**
      * Get emailAddress
      *
-     * @return string 
+     * @return string
      */
     public function getEmailAddress()
     {
@@ -290,6 +298,7 @@ class Contact extends AbstractEntity
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Contact
      */
     public function setUpdatedAt($updatedAt)
@@ -302,7 +311,7 @@ class Contact extends AbstractEntity
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

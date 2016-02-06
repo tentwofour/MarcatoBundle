@@ -26,25 +26,32 @@ class DateHandler extends BaseDateHandler
     /**
      * @param string $defaultFormat
      * @param string $defaultTimezone
-     * @param bool $xmlCData
+     * @param bool   $xmlCData
      */
-    public function __construct($defaultFormat = \DateTime::ISO8601, $defaultTimezone = 'UTC', $xmlCData = true)
+    public function __construct($defaultFormat = \DateTime::ISO8601,
+                                $defaultTimezone = 'UTC',
+                                $xmlCData = true)
     {
-        $this->defaultFormat = $defaultFormat;
+        $this->defaultFormat   = $defaultFormat;
         $this->defaultTimezone = new \DateTimeZone($defaultTimezone);
-        $this->xmlCData = $xmlCData;
+        $this->xmlCData        = $xmlCData;
     }
 
     /**
      * This method needed to be overridden from JMS's - Marcato passes <date nil=true /> nodes
      * but JMS looks for the xsi:nil attribute
+     *
      * @see \JMS\Serializer\Handler\DateHandler#deserializeDateTimeFromXml()
+     *
      * @param XmlDeserializationVisitor $visitor
-     * @param $data
-     * @param array $type
+     * @param                           $data
+     * @param array                     $type
+     *
      * @return \DateTime|null
      */
-    public function deserializeDateTimeFromXml(XmlDeserializationVisitor $visitor, $data, array $type)
+    public function deserializeDateTimeFromXml(XmlDeserializationVisitor $visitor,
+                                               $data,
+                                               array $type)
     {
         $attributes = $data->attributes();
 
@@ -57,14 +64,16 @@ class DateHandler extends BaseDateHandler
     }
 
     /**
-     * @param $data
+     * @param       $data
      * @param array $type
+     *
      * @return \DateTime
      */
-    private function parseDateTime($data, array $type)
+    private function parseDateTime($data,
+                                   array $type)
     {
         $timezone = isset($type['params'][1]) ? new \DateTimeZone($type['params'][1]) : $this->defaultTimezone;
-        $format = $this->getFormat($type);
+        $format   = $this->getFormat($type);
         $datetime = \DateTime::createFromFormat($format, ltrim(trim((string)$data)), $timezone);
 
         if (false === $datetime)
@@ -77,6 +86,7 @@ class DateHandler extends BaseDateHandler
 
     /**
      * @return string
+     *
      * @param array $type
      */
     private function getFormat(array $type)

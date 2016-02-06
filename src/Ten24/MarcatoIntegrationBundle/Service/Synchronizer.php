@@ -2,9 +2,7 @@
 
 namespace Ten24\MarcatoIntegrationBundle\Service;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
-use Ten24\MarcatoIntegrationBundle\Entity\Performance;
 
 /**
  * Class Synchronizer
@@ -51,6 +49,16 @@ class Synchronizer
     }
 
     /**
+     * shortcut
+     *
+     * @see synchronizeAll
+     */
+    public function synchronize()
+    {
+        $this->synchronizeAll();
+    }
+
+    /**
      * Synchronize all feeds
      */
     public function synchronizeAll()
@@ -83,16 +91,6 @@ class Synchronizer
         }
 
         $this->entityManager->flush();
-    }
-
-    /**
-     * shortcut
-     *
-     * @see synchronizeAll
-     */
-    public function synchronize()
-    {
-        $this->synchronizeAll();
     }
 
     /**
@@ -175,7 +173,7 @@ class Synchronizer
             foreach ($shows->getShows() as $show)
             {
 
-                $old = $show->getPerformances();
+                $old  = $show->getPerformances();
                 $temp = clone $old;
 
                 foreach ($old as $o)
@@ -187,7 +185,7 @@ class Synchronizer
                         $o->addArtist($artist);
                     }
 
-                    foreach($temp as $t)
+                    foreach ($temp as $t)
                     {
                         if ($t !== $o && $t->getId() === $o->getId())
                         {

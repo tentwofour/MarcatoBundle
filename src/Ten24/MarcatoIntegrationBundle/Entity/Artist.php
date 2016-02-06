@@ -147,10 +147,10 @@ class Artist extends AbstractEntity
     public function __construct()
     {
         $this->performances = new ArrayCollection();
-        $this->shows = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-        $this->workshops = new ArrayCollection();
-        $this->websites = new ArrayCollection();
+        $this->shows        = new ArrayCollection();
+        $this->tags         = new ArrayCollection();
+        $this->workshops    = new ArrayCollection();
+        $this->websites     = new ArrayCollection();
     }
 
     /**
@@ -171,6 +171,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $name
+     *
      * @return Artist
      */
     public function setName($name)
@@ -190,6 +191,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $biography
+     *
      * @return Artist
      */
     public function setBiography($biography)
@@ -209,6 +211,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $genre
+     *
      * @return Artist
      */
     public function setGenre($genre)
@@ -228,6 +231,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $homebase
+     *
      * @return Artist
      */
     public function setHomebase($homebase)
@@ -247,6 +251,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $webPhotoUrl
+     *
      * @return Artist
      */
     public function setWebPhotoUrl($webPhotoUrl)
@@ -266,6 +271,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $webPhotoFingerprint
+     *
      * @return Artist
      */
     public function setWebPhotoFingerprint($webPhotoFingerprint)
@@ -285,6 +291,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $ordering
+     *
      * @return Artist
      */
     public function setOrdering($ordering)
@@ -304,6 +311,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param mixed $updatedAt
+     *
      * @return Artist
      */
     public function setUpdatedAt($updatedAt)
@@ -323,6 +331,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param string $website
+     *
      * @return Artist
      */
     public function setWebsite($website)
@@ -368,6 +377,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param ArrayCollection $websites
+     *
      * @return Artist
      */
     public function setWebsites(ArrayCollection $websites)
@@ -380,6 +390,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Website $website
+     *
      * @return Artist
      */
     public function addWebsite(Website $website)
@@ -394,6 +405,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Website $website
+     *
      * @return Artist
      */
     public function removeWebsite(Website $website)
@@ -416,13 +428,14 @@ class Artist extends AbstractEntity
 
     /**
      * @param ArrayCollection $performances
+     *
      * @return Artist
      */
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
 
-        foreach($performances as $performance)
+        foreach ($performances as $performance)
         {
             $this->addPerformance($performance);
         }
@@ -432,6 +445,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Performance $performance
+     *
      * @return Artist
      */
     public function addPerformance(Performance $performance)
@@ -447,6 +461,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Performance $performance
+     *
      * @return Artist
      */
     public function removePerformance(Performance $performance)
@@ -470,6 +485,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param ArrayCollection $shows
+     *
      * @return Artist
      */
     public function setShows(ArrayCollection $shows)
@@ -482,6 +498,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Show $show
+     *
      * @return Artist
      */
     public function addShow(Show $show)
@@ -496,6 +513,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Show $show
+     *
      * @return Artist
      */
     public function removeShow(Show $show)
@@ -518,6 +536,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param ArrayCollection $workshops
+     *
      * @return Artist
      */
     public function setWorkshops(ArrayCollection $workshops)
@@ -530,6 +549,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Workshop $workshop
+     *
      * @return Artist
      */
     public function addWorkshop(Workshop $workshop)
@@ -544,6 +564,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Workshop $workshop
+     *
      * @return Artist
      */
     public function removeWorkshop(Workshop $workshop)
@@ -566,6 +587,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param ArrayCollection $tags
+     *
      * @return Artist
      */
     public function setTags(ArrayCollection $tags)
@@ -578,6 +600,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Artist
      */
     public function addTag(Tag $tag)
@@ -592,6 +615,7 @@ class Artist extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Artist
      */
     public function removeTag(Tag $tag)
@@ -612,7 +636,7 @@ class Artist extends AbstractEntity
     {
         if (null !== $name && count($this->websites) > 0)
         {
-            foreach($this->websites as $website)
+            foreach ($this->websites as $website)
             {
                 if ($website->getName() === $name)
                 {

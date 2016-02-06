@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class AbstractEntity
+ *
  * @package Ten24\MarcatoIntegrationBundle\Entity
  */
 abstract class AbstractEntity
@@ -32,6 +33,7 @@ abstract class AbstractEntity
 
     /**
      * @param mixed $id
+     *
      * @return AbstractEntity
      */
     public function setId($id)

@@ -194,13 +194,14 @@ class Show extends AbstractEntity
     public function __construct()
     {
         $this->performances = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+        $this->tags         = new ArrayCollection();
     }
 
     /**
      * Set name
      *
      * @param string $name
+     *
      * @return Show
      */
     public function setName($name)
@@ -224,6 +225,7 @@ class Show extends AbstractEntity
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Show
      */
     public function setDate($date)
@@ -247,6 +249,7 @@ class Show extends AbstractEntity
      * Set description
      *
      * @param string $description
+     *
      * @return Show
      */
     public function setDescription($description)
@@ -270,6 +273,7 @@ class Show extends AbstractEntity
      * Set price
      *
      * @param string $price
+     *
      * @return Show
      */
     public function setPrice($price)
@@ -293,6 +297,7 @@ class Show extends AbstractEntity
      * Set ticketInfo
      *
      * @param string $ticketInfo
+     *
      * @return Show
      */
     public function setTicketInfo($ticketInfo)
@@ -316,6 +321,7 @@ class Show extends AbstractEntity
      * Set ticketLink
      *
      * @param string $ticketLink
+     *
      * @return Show
      */
     public function setTicketLink($ticketLink)
@@ -339,6 +345,7 @@ class Show extends AbstractEntity
      * Set ticketStatus
      *
      * @param string $ticketStatus
+     *
      * @return Show
      */
     public function setTicketStatus($ticketStatus)
@@ -362,6 +369,7 @@ class Show extends AbstractEntity
      * Set seating
      *
      * @param string $seating
+     *
      * @return Show
      */
     public function setSeating($seating)
@@ -385,6 +393,7 @@ class Show extends AbstractEntity
      * Set startTime
      *
      * @param \DateTime $startTime
+     *
      * @return Show
      */
     public function setStartTime($startTime)
@@ -408,6 +417,7 @@ class Show extends AbstractEntity
      * Set endTime
      *
      * @param \DateTime $endTime
+     *
      * @return Show
      */
     public function setEndTime($endTime)
@@ -431,6 +441,7 @@ class Show extends AbstractEntity
      * Set doorTime
      *
      * @param \DateTime $doorTime
+     *
      * @return Show
      */
     public function setDoorTime($doorTime)
@@ -454,6 +465,7 @@ class Show extends AbstractEntity
      * Set facebookLink
      *
      * @param string $facebookLink
+     *
      * @return Show
      */
     public function setFacebookLink($facebookLink)
@@ -477,6 +489,7 @@ class Show extends AbstractEntity
      * Set posterUrl
      *
      * @param string $posterUrl
+     *
      * @return Show
      */
     public function setPosterUrl($posterUrl)
@@ -500,6 +513,7 @@ class Show extends AbstractEntity
      * Set posterFingerprint
      *
      * @param string $posterFingerprint
+     *
      * @return Show
      */
     public function setPosterFingerprint($posterFingerprint)
@@ -523,6 +537,7 @@ class Show extends AbstractEntity
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Show
      */
     public function setUpdatedAt($updatedAt)
@@ -570,6 +585,7 @@ class Show extends AbstractEntity
 
     /**
      * @param Venue $venue
+     *
      * @return Show
      */
     public function setVenue(Venue $venue)
@@ -599,6 +615,7 @@ class Show extends AbstractEntity
 
     /**
      * @param $tags
+     *
      * @return Show
      */
     public function setTags(ArrayCollection $tags)
@@ -611,6 +628,7 @@ class Show extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Show
      */
     public function addTag(Tag $tag)
@@ -625,6 +643,7 @@ class Show extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Show
      */
     public function removeTag(Tag $tag)
@@ -647,13 +666,14 @@ class Show extends AbstractEntity
 
     /**
      * @param ArrayCollection $performances
+     *
      * @return Show
      */
     public function setPerformances(ArrayCollection $performances)
     {
         $this->performances->clear();
 
-        foreach($performances as $performance)
+        foreach ($performances as $performance)
         {
             $this->addPerformance($performance);
         }
@@ -663,6 +683,7 @@ class Show extends AbstractEntity
 
     /**
      * @param Performance $performance
+     *
      * @return Show
      */
     public function addPerformance(Performance $performance)
@@ -680,6 +701,7 @@ class Show extends AbstractEntity
 
     /**
      * @param Performance $performance
+     *
      * @return Show
      */
     public function removePerformance(Performance $performance)

@@ -166,8 +166,8 @@ class Venue extends AbstractEntity
      */
     public function __construct()
     {
-        $this->shows = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+        $this->shows    = new ArrayCollection();
+        $this->tags     = new ArrayCollection();
         $this->websites = new ArrayCollection();
     }
 
@@ -175,6 +175,7 @@ class Venue extends AbstractEntity
      * Set name
      *
      * @param string $name
+     *
      * @return Venue
      */
     public function setName($name)
@@ -187,7 +188,7 @@ class Venue extends AbstractEntity
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -198,6 +199,7 @@ class Venue extends AbstractEntity
      * Set street
      *
      * @param string $street
+     *
      * @return Venue
      */
     public function setStreet($street)
@@ -210,7 +212,7 @@ class Venue extends AbstractEntity
     /**
      * Get street
      *
-     * @return string 
+     * @return string
      */
     public function getStreet()
     {
@@ -221,6 +223,7 @@ class Venue extends AbstractEntity
      * Set city
      *
      * @param string $city
+     *
      * @return Venue
      */
     public function setCity($city)
@@ -233,7 +236,7 @@ class Venue extends AbstractEntity
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -244,6 +247,7 @@ class Venue extends AbstractEntity
      * Set provinceState
      *
      * @param string $provinceState
+     *
      * @return Venue
      */
     public function setProvinceState($provinceState)
@@ -256,7 +260,7 @@ class Venue extends AbstractEntity
     /**
      * Get provinceState
      *
-     * @return string 
+     * @return string
      */
     public function getProvinceState()
     {
@@ -267,6 +271,7 @@ class Venue extends AbstractEntity
      * Set country
      *
      * @param string $country
+     *
      * @return Venue
      */
     public function setCountry($country)
@@ -279,7 +284,7 @@ class Venue extends AbstractEntity
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
@@ -290,6 +295,7 @@ class Venue extends AbstractEntity
      * Set postalCode
      *
      * @param string $postalCode
+     *
      * @return Venue
      */
     public function setPostalCode($postalCode)
@@ -302,7 +308,7 @@ class Venue extends AbstractEntity
     /**
      * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -313,6 +319,7 @@ class Venue extends AbstractEntity
      * Set community
      *
      * @param string $community
+     *
      * @return Venue
      */
     public function setCommunity($community)
@@ -325,7 +332,7 @@ class Venue extends AbstractEntity
     /**
      * Get community
      *
-     * @return string 
+     * @return string
      */
     public function getCommunity()
     {
@@ -336,6 +343,7 @@ class Venue extends AbstractEntity
      * Set longitude
      *
      * @param string $longitude
+     *
      * @return Venue
      */
     public function setLongitude($longitude)
@@ -348,7 +356,7 @@ class Venue extends AbstractEntity
     /**
      * Get longitude
      *
-     * @return string 
+     * @return string
      */
     public function getLongitude()
     {
@@ -359,6 +367,7 @@ class Venue extends AbstractEntity
      * Set latitude
      *
      * @param string $latitude
+     *
      * @return Venue
      */
     public function setLatitude($latitude)
@@ -371,7 +380,7 @@ class Venue extends AbstractEntity
     /**
      * Get latitude
      *
-     * @return string 
+     * @return string
      */
     public function getLatitude()
     {
@@ -382,6 +391,7 @@ class Venue extends AbstractEntity
      * Set photoUrl
      *
      * @param string $photoUrl
+     *
      * @return Venue
      */
     public function setPhotoUrl($photoUrl)
@@ -394,7 +404,7 @@ class Venue extends AbstractEntity
     /**
      * Get photoUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoUrl()
     {
@@ -405,6 +415,7 @@ class Venue extends AbstractEntity
      * Set photoFingerprint
      *
      * @param string $photoFingerprint
+     *
      * @return Venue
      */
     public function setPhotoFingerprint($photoFingerprint)
@@ -417,7 +428,7 @@ class Venue extends AbstractEntity
     /**
      * Get photoFingerprint
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoFingerprint()
     {
@@ -428,6 +439,7 @@ class Venue extends AbstractEntity
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Venue
      */
     public function setUpdatedAt($updatedAt)
@@ -440,7 +452,7 @@ class Venue extends AbstractEntity
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -483,6 +495,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param ArrayCollection $websites
+     *
      * @return Venue
      */
     public function setWebsites(ArrayCollection $websites)
@@ -525,6 +538,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param ArrayCollection $shows
+     *
      * @return Venue
      */
     public function setShows(ArrayCollection $shows)
@@ -537,6 +551,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param Show $show
+     *
      * @return Venue
      */
     public function addShow(Show $show)
@@ -553,6 +568,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param Show $show
+     *
      * @return Venue
      */
     public function removeShow(Show $show)
@@ -564,7 +580,7 @@ class Venue extends AbstractEntity
 
         return $this;
     }
-    
+
     /**
      * @return ArrayCollection
      */
@@ -575,6 +591,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param ArrayCollection $tags
+     *
      * @return Venue
      */
     public function setTags(ArrayCollection $tags)
@@ -587,6 +604,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Venue
      */
     public function addTag(Tag $tag)
@@ -601,6 +619,7 @@ class Venue extends AbstractEntity
 
     /**
      * @param Tag $tag
+     *
      * @return Venue
      */
     public function removeTag(Tag $tag)

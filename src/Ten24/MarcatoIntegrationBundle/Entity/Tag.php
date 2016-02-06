@@ -31,9 +31,20 @@ class Tag extends AbstractEntity
     }
 
     /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
+     *
      * @return Tag
      */
     public function setName($name)
@@ -41,15 +52,5 @@ class Tag extends AbstractEntity
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 }

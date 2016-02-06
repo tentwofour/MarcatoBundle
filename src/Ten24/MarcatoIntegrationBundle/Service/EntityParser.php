@@ -7,6 +7,7 @@ use JMS\Serializer\Serializer;
 
 /**
  * Class EntityParser
+ *
  * @package Ten24\MarcatoIntegrationBundle\Service
  */
 class EntityParser
@@ -16,24 +17,24 @@ class EntityParser
      */
     private $serializer;
 
-    const TYPE_ARTIST = 'Ten24\MarcatoIntegrationBundle\Entity\Artist';
-    const TYPE_CONTACT = 'Ten24\MarcatoIntegrationBundle\Entity\Contact';
+    const TYPE_ARTIST      = 'Ten24\MarcatoIntegrationBundle\Entity\Artist';
+    const TYPE_CONTACT     = 'Ten24\MarcatoIntegrationBundle\Entity\Contact';
     const TYPE_PERFORMANCE = 'Ten24\MarcatoIntegrationBundle\Entity\Performance';
-    const TYPE_SHOW = 'Ten24\MarcatoIntegrationBundle\Entity\Show';
-    const TYPE_VENUE = 'Ten24\MarcatoIntegrationBundle\Entity\Venue';
-    const TYPE_WORKSHOP = 'Ten24\MarcatoIntegrationBundle\Entity\Workshop';
+    const TYPE_SHOW        = 'Ten24\MarcatoIntegrationBundle\Entity\Show';
+    const TYPE_VENUE       = 'Ten24\MarcatoIntegrationBundle\Entity\Venue';
+    const TYPE_WORKSHOP    = 'Ten24\MarcatoIntegrationBundle\Entity\Workshop';
 
     /**
      * @var array
      */
-    private $feedToEntityMapping = array(
+    private $feedToEntityMapping = [
         Downloader::FEED_TYPE_ARTISTS      => self::TYPE_ARTIST,
         Downloader::FEED_TYPE_CONTACTS     => self::TYPE_CONTACT,
         Downloader::FEED_TYPE_PERFORMANCES => self::TYPE_PERFORMANCE,
         Downloader::FEED_TYPE_SHOWS        => self::TYPE_SHOW,
         Downloader::FEED_TYPE_VENUES       => self::TYPE_VENUE,
         Downloader::FEED_TYPE_WORKSHOPS    => self::TYPE_WORKSHOP,
-    );
+    ];
 
     /**
      * @param \JMS\Serializer\Serializer $serializer
@@ -45,11 +46,14 @@ class EntityParser
 
     /**
      * Parse passed xml into type (Entity)
-     * @param null $feedType
+     *
+     * @param null   $feedType
      * @param string $xml
+     *
      * @return mixed|object
      */
-    public function parse($feedType = null, $xml = '')
+    public function parse($feedType = null,
+                          $xml = '')
     {
         // Find the entity type that maps to the feed type
         if (null === ($entityType = $this->getEntityMappingForFeedType($feedType)))
@@ -73,7 +77,9 @@ class EntityParser
 
     /**
      * Get the entity mapping for the provided feed type
+     *
      * @param $feedType
+     *
      * @return null
      */
     private function getEntityMappingForFeedType($feedType)

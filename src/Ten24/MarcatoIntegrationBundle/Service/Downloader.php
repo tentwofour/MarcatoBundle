@@ -7,8 +7,6 @@ use Guzzle\Http\EntityBodyInterface;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class Downloader
 {
@@ -54,6 +52,7 @@ class Downloader
 
     /**
      * The values from the 'feeds' bundle configuration node
+     *
      * @var array
      */
     private $configuration;
@@ -71,20 +70,21 @@ class Downloader
     /**
      * @var array
      */
-    private $validFeedTypes = array(
+    private $validFeedTypes = [
         self::FEED_TYPE_ARTISTS,
         self::FEED_TYPE_CONTACTS,
         self::FEED_TYPE_PERFORMANCES,
         self::FEED_TYPE_SHOWS,
         self::FEED_TYPE_VENUES,
         self::FEED_TYPE_WORKSHOPS
-    );
+    ];
 
     /**
      * @param $organizationId
      * @param $configuration
      */
-    public function __construct($organizationId, $configuration)
+    public function __construct($organizationId,
+                                $configuration)
     {
         if (empty($organizationId))
         {
@@ -92,7 +92,7 @@ class Downloader
         }
 
         $this->organizationId = $organizationId;
-        $this->configuration = $configuration;
+        $this->configuration  = $configuration;
     }
 
     /**
@@ -100,14 +100,14 @@ class Downloader
      */
     public function retrieveAll()
     {
-        $out = array();
+        $out = [];
 
         foreach ($this->validFeedTypes as $feedType)
         {
             // Check to make sure the feed type is enabled in the bundle config
             if ($this->configuration[$feedType])
             {
-                $url = $this->buildFeedUrl($feedType);
+                $url            = $this->buildFeedUrl($feedType);
                 $out[$feedType] = $this->downloadXml($url);
             }
         }
@@ -195,24 +195,26 @@ class Downloader
 
     /**
      * Do the dirty work.
+     *
      * @param string $url
+     *
      * @return EntityBodyInterface|string
      */
     private function downloadXml($url)
     {
         try
         {
-            $client = new Client($url);
-            $request = $client->createRequest('GET', $url);
+            $client   = new Client($url);
+            $request  = $client->createRequest('GET', $url);
             $response = $client->send($request);
-            $code = $response->getStatusCode();
+            $code     = $response->getStatusCode();
 
             if ($code !== 200)
             {
                 throw new BadResponseException(sprintf('Cannot load resource "%s": returned %d with message: "%s"',
-                    $url,
-                    $code,
-                    $response->getReasonPhrase()));
+                                                       $url,
+                                                       $code,
+                                                       $response->getReasonPhrase()));
             }
 
             return $response->getBody(false);
@@ -225,6 +227,7 @@ class Downloader
 
     /**
      * @param $feedType
+     *
      * @return string
      */
     private function buildFeedUrl($feedType)

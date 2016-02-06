@@ -21,6 +21,7 @@ class Venues
 
     /**
      * Get an array of Ten24\MarcatoIntegrationBundle\Entity\Venue
+     *
      * @return array
      */
     public function getVenues()
