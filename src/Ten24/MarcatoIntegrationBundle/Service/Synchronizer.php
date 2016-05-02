@@ -100,19 +100,44 @@ class Synchronizer
     {
         if ($this->configuration['artists'])
         {
-            $xml = $this->downloader->retrieveArtists();
+            $xml  = $this->downloader->retrieveArtists();
+            $repo = $this->entityManager->getRepository('Ten24MarcatoIntegrationBundle:Artist');
+
+            // @todo - this should read the configuration of gedmo/ORM to get the proper filter name, as it can be renamed (I think)
+            $this->entityManager
+                ->getFilters()
+                ->disable('softdeleteable');
+
+            $existingIds = array_keys($repo->findAllOrderByNameAsc('id'));
 
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Artists $artists */
             $artists = $this->parser->parse(Downloader::FEED_TYPE_ARTISTS, $xml);
 
-            /**
-             * @todo this needs to check the current entities and do a diff against the newly parsed, and set the one's not found to un-published (locally)
-             */
+            // @todo - this should read the configuration of gedmo/ORM to get the proper filter name, as it can be renamed (I think)
+            $this->entityManager
+                ->getFilters()
+                ->enable('softdeleteable');
 
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Artist $artist */
             foreach ($artists->getArtists() as $artist)
             {
-                $this->entityManager->merge($artist);
+                // If the incoming matches an existing artist, update.
+                if (in_array($artist->getId(), $existingIds))
+                {
+                    $this->entityManager->merge($artist);
+
+                    unset($existingIds[array_search($artist->getId(), $existingIds)]);
+                }
+            }
+
+            // Anything left, schedule for removal
+            if (count($existingIds) > 0)
+            {
+                foreach ($existingIds as $existingId)
+                {
+                    $artist = $this->entityManager->getReference('Ten24MarcatoIntegrationBundle:Artist', $existingId);
+                    $this->entityManager->remove($artist);
+                }
             }
 
             if ($flush)
