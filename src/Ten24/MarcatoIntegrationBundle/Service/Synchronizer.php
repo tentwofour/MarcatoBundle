@@ -121,13 +121,8 @@ class Synchronizer
             /** @var \Ten24\MarcatoIntegrationBundle\Entity\Artist $artist */
             foreach ($artists->getArtists() as $artist)
             {
-                // If the incoming matches an existing artist, update.
-                if (in_array($artist->getId(), $existingIds))
-                {
-                    $this->entityManager->merge($artist);
-
-                    unset($existingIds[array_search($artist->getId(), $existingIds)]);
-                }
+                $this->entityManager->merge($artist);
+                unset($existingIds[array_search($artist->getId(), $existingIds)]);
             }
 
             // Anything left, schedule for removal
