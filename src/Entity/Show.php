@@ -8,19 +8,21 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Workshop
+ * Show
  *
- * @ORM\Table(name="ten24_marcato_workshops")
- * @ORM\Entity(repositoryClass="Ten24\MarcatoIntegrationBundle\Repository\WorkshopRepository")
+ * @ORM\Table(name="ten24_marcato_shows")
+ * @ORM\Entity(repositoryClass="Ten24\MarcatoIntegrationBundle\Repository\ShowRepository")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=true)
  * @Serializer\ExclusionPolicy("none")
  */
-class Workshop extends AbstractEntity
+class Show extends AbstractEntity
 {
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("name")
      */
     private $name;
 
@@ -37,6 +39,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("description_public")
      */
     private $description;
@@ -45,6 +48,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="price", type="string", length=255, nullable=true)
+     * @Serializer\Type("string")
      */
     private $price;
 
@@ -52,6 +56,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="ticket_info", type="string", length=255, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("ticket_info")
      */
     private $ticketInfo;
@@ -60,6 +65,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="ticket_link", type="string", length=255, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("ticket_link")
      */
     private $ticketLink;
@@ -68,6 +74,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="ticket_status", type="string", length=128, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("ticket_status")
      */
     private $ticketStatus;
@@ -76,13 +83,14 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="seating", type="string", length=128, nullable=true)
+     * @Serializer\Type("string")
      */
     private $seating;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start_time", type="datetime", options={"default" = NULL}, nullable=true)
+     * @ORM\Column(name="start_time", type="datetime", nullable=true, options={"default" = NULL})
      * @Serializer\Type("DateTime<'U'>")
      * @Serializer\SerializedName("start_time_unix")
      */
@@ -91,7 +99,7 @@ class Workshop extends AbstractEntity
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end_time", type="datetime", options={"default" = NULL}, nullable=true)
+     * @ORM\Column(name="end_time", type="datetime", nullable=true)
      * @Serializer\Type("DateTime<'U'>")
      * @Serializer\SerializedName("end_time_unix")
      */
@@ -100,7 +108,7 @@ class Workshop extends AbstractEntity
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="door_time", type="datetime", options={"default" = NULL}, nullable=true)
+     * @ORM\Column(name="door_time", type="datetime", nullable=true)
      * @Serializer\Type("DateTime<'U'>")
      * @Serializer\SerializedName("door_time_unix")
      */
@@ -110,6 +118,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="facebook_link", type="string", length=255, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("facebook_link")
      */
     private $facebookLink;
@@ -118,6 +127,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="poster_url", type="string", length=255, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("poster_url")
      */
     private $posterUrl;
@@ -126,6 +136,7 @@ class Workshop extends AbstractEntity
      * @var string
      *
      * @ORM\Column(name="poster_fingerprint", type="string", length=128, nullable=true)
+     * @Serializer\Type("string")
      * @Serializer\SerializedName("poster_fingerprint")
      */
     private $posterFingerprint;
@@ -134,10 +145,11 @@ class Workshop extends AbstractEntity
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetimetz", nullable=true)
-     * @Serializer\SerializedName("updated_at")
      * @Serializer\Type("DateTime")
+     * @Serializer\SerializedName("updated_at")
      */
     private $updatedAt;
+
     /**
      * @Gedmo\Slug(fields={"date", "name"})
      * @ORM\Column(length=255, unique=true)
@@ -150,32 +162,39 @@ class Workshop extends AbstractEntity
     private $deletedAt;
 
     /**
-     * @todo - test this; Marcato sends the entire Venue, so this could persist, and not be excluded from deserialization
-     * Excluded from serializer; the venues are imported separately
-     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Venue")
-     * @ORM\JoinColumn(name="venue_id", referencedColumnName="id")
-     * @Serializer\Exclude()
+     * @ORM\ManyToOne(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Venue", inversedBy="shows", cascade={"persist", "merge", "remove"})
+     * @ORM\JoinColumn(name="venue_id", referencedColumnName="id", nullable=false, onDelete="SET NULL", unique=false)
+     * @Serializer\Type("Ten24\MarcatoIntegrationBundle\Entity\Venue")
+     * @Serializer\SerializedName("venue")
      */
     private $venue;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge"})
-     * @ORM\JoinTable(name="ten24_marcato_workshops_tags",
-     *      joinColumns={@ORM\JoinColumn(name="workshop_id", referencedColumnName="id", nullable=false)},
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge", "remove"})
+     * @ORM\JoinTable(name="ten24_marcato_shows_tags",
+     *      joinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false)}
      *      )
-     * @Serializer\SerializedName("tags")
+     *
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
      * @Serializer\XmlList(entry="tag", inline=false)
      */
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Performance", mappedBy="show", cascade={"persist", "merge", "remove"})
+     * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Performance>")
+     * @Serializer\XmlList(entry="performance")
+     */
+    private $performances;
+
+    /**
      *
      */
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
+        $this->performances = new ArrayCollection();
+        $this->tags         = new ArrayCollection();
     }
 
     /**
@@ -211,7 +230,7 @@ class Workshop extends AbstractEntity
      */
     public function setDate($date)
     {
-        $this->date = $date;
+        $this->date = new \DateTime("@$date");
 
         return $this;
     }
@@ -539,6 +558,32 @@ class Workshop extends AbstractEntity
     }
 
     /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param \DateTime $deletedAt
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
+    /**
      * @param Venue $venue
      *
      * @return Show
@@ -546,6 +591,8 @@ class Workshop extends AbstractEntity
     public function setVenue(Venue $venue)
     {
         $this->venue = $venue;
+
+        $venue->addShow($this);
 
         return $this;
     }
@@ -559,28 +606,111 @@ class Workshop extends AbstractEntity
     }
 
     /**
-     * Get slug
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param $tags
      *
-     * @return string
+     * @return Show
      */
-    public function getSlug()
+    public function setTags(ArrayCollection $tags)
     {
-        return $this->slug;
+        $this->tags->clear();
+        $this->tags = $tags;
+
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * @param Tag $tag
+     *
+     * @return Show
      */
-    public function getDeletedAt()
+    public function addTag(Tag $tag)
     {
-        return $this->deletedAt;
+        if (!$this->tags->contains($tag))
+        {
+            $this->tags->add($tag);
+        }
+
+        return $this;
     }
 
     /**
-     * @param \DateTime $deletedAt
+     * @param Tag $tag
+     *
+     * @return Show
      */
-    public function setDeletedAt($deletedAt)
+    public function removeTag(Tag $tag)
     {
-        $this->deletedAt = $deletedAt;
+        if ($this->tags->contains($tag))
+        {
+            $this->tags->removeElement($tag);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPerformances()
+    {
+        return $this->performances;
+    }
+
+    /**
+     * @param ArrayCollection $performances
+     *
+     * @return Show
+     */
+    public function setPerformances(ArrayCollection $performances)
+    {
+        $this->performances->clear();
+
+        foreach ($performances as $performance)
+        {
+            $this->addPerformance($performance);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Performance $performance
+     *
+     * @return Show
+     */
+    public function addPerformance(Performance $performance)
+    {
+        // Sometimes, Marcato puts an empty <performances type="array">
+        // This check should be moved to a custom deserializer handler
+        if (!$this->performances->contains($performance))
+        {
+            $this->performances->add($performance);
+            $performance->setShow($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Performance $performance
+     *
+     * @return Show
+     */
+    public function removePerformance(Performance $performance)
+    {
+        if ($this->performances->contains($performance))
+        {
+            $this->performances->removeElement($performance);
+        }
+
+        return $this;
     }
 }

@@ -88,10 +88,10 @@ class Artist extends AbstractEntity
     private $deletedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Website", cascade={"persist", "merge"})
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Website", cascade={"persist", "merge", "remove"})
      * @ORM\JoinTable(name="ten24_marcato_artists_websites",
-     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="website_id", referencedColumnName="id", nullable=false)}
+     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="website_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")}
      *      )
      * @Serializer\SerializedName("websites")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Website>")
@@ -100,20 +100,20 @@ class Artist extends AbstractEntity
     private $websites;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Show", cascade={"persist", "merge"})
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Show", cascade={"persist", "merge", "remove"})
      * @ORM\JoinTable(name="ten24_marcato_artists_shows",
-     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false)}
+     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="show_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")}
      *      )
      * @Serializer\Exclude()
      */
     private $shows;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Workshop", cascade={"persist", "merge"})
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Workshop", cascade={"persist", "merge", "remove"})
      * @ORM\JoinTable(name="ten24_marcato_artists_workshops",
-     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="workshop_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="workshop_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      * @Serializer\SerializedName("workshops")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Workshop>")
@@ -130,10 +130,10 @@ class Artist extends AbstractEntity
     private $performances;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge"})
+     * @ORM\ManyToMany(targetEntity="Ten24\MarcatoIntegrationBundle\Entity\Tag", cascade={"persist", "merge", "remove"})
      * @ORM\JoinTable(name="ten24_marcato_artists_tags",
-     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false)},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false)}
+     *      joinColumns={@ORM\JoinColumn(name="artist_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")}
      *      )
      * @Serializer\SerializedName("tags")
      * @Serializer\Type("ArrayCollection<Ten24\MarcatoIntegrationBundle\Entity\Tag>")
